@@ -2,8 +2,9 @@ import java.util.ArrayList;
 
 public class VigenereCipher {
 
-    private char[][] matrix;
+    char[][] matrix;
     private String key;
+    String keystream;
     private String originalText;
     private String textWithoutSpaces;
     private ArrayList<Character> characters;
@@ -47,7 +48,7 @@ public class VigenereCipher {
         this.originalText = text.toUpperCase();
         this.textWithoutSpaces = text.toUpperCase().replaceAll("\\s+","");
 
-        String keystream = createKeystream(textWithoutSpaces);
+        keystream = createKeystream(textWithoutSpaces);
 
         char[] textInCharArray = textWithoutSpaces.toCharArray();
         char[] keystreamInArray = keystream.toCharArray();
