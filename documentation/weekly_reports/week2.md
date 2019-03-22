@@ -17,7 +17,8 @@
 
 
 #### Problems, difficulties etc.
-Not really any problems now that I changed to a better subject.  
+Not really any problems now that I changed to a better subject. Just wondering if chosen subject is enough for
+ course requirements
 
 
 #### What next
