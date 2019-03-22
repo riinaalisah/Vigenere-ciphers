@@ -1,4 +1,4 @@
-## Specification Document (Määrittelydokumentti)
+## Specification Document
 
 The aim for this project is to create a program that can encrypt a message using one of two different versions of Vigenère cipher.
  When the message is encrypted, the program creates a text file of the encrypted message.
@@ -18,6 +18,9 @@ The chosen Vigenère ciphers are normal Vigenère cipher and keyed Vigenère cip
 - keyword in reverse order 
 
 The goal is to have time complexity of O(n^2). Since both algorithms use a tableau, two nested for loops are needed.
+
+The main data structures are arrays, since the message needs to be encrypted letter by letter and it is best
+ to go through them in an array
   
   
 ##### Input and Output
@@ -36,6 +39,7 @@ The goal is to have time complexity of O(n^2). Since both algorithms use a table
 
 http://rumkin.com/tools/cipher/vigenere.php
 http://rumkin.com/tools/cipher/vigenere-keyed.php
+https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
 
 
 
