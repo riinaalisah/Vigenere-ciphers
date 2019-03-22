@@ -1,4 +1,4 @@
-# Vigenere ciphers
+# Vigenère ciphers
 
 This project is for the course *Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit*.
 
