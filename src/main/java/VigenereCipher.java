@@ -94,25 +94,4 @@ public class VigenereCipher {
         return encrypted;
     }
 
-    /*
-    private String createKeystream(String text) {
-        String keystream = "";
-
-        char[] textChars = text.toCharArray();
-        char[] keyChars = key.toCharArray();
-        int keyIndex = 0;
-
-        for (int i = 0; i < textChars.length; i++) {
-            keystream += keyChars[keyIndex];
-            keyIndex++;
-            if (keyIndex == keyChars.length) {
-                keyIndex = 0;
-            }
-        }
-
-        return keystream;
-    }
-    */
-
-
 }

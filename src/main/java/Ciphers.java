@@ -1,9 +1,11 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Ciphers {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Welcome to Vigenère ciphers!");
@@ -29,7 +31,7 @@ public class Ciphers {
             System.out.println("You chose normal Vigenère cipher");
             System.out.println("Enter passphrase");
             String passphrase = sc.next();
-
+            vc.encrypt(passphrase, file);
 
         } else if (cipherNumber == 2) {
             System.out.println("You chose keyed Vigenère cipher");

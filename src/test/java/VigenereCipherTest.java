@@ -1,8 +1,8 @@
+import junitx.framework.FileAssert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -51,25 +51,38 @@ public class VigenereCipherTest {
                          "ZABCDEFGHIJKLMNOPQRSTUVWXY\n";
 
         String tableau = "";
-        for (int y = 0; y < vc.matrix.length; y++) {
-            for (int x = 0; x < vc.matrix[y].length; x++) {
-                tableau += vc.matrix[y][x];
+        for (int y = 0; y < vc.tableau.length; y++) {
+            for (int x = 0; x < vc.tableau[y].length; x++) {
+                tableau += vc.tableau[y][x];
             }
             tableau += "\n";
         }
         assertEquals(correct, tableau);
     }
 
+
     @Test
-    public void keystreamIsCorrect() {
-        vc.encrypt("helsinki", "cats are pretty cool");
-        assertEquals("HELSINKIHELSINKIH", vc.keystream);
+    public void simpleTextWithOnlyAlphabetIsCorrect() throws IOException {
+        File correct = new File("texts/cat_correct.txt");
+        FileWriter fw = new FileWriter("texts/cat_correct.txt");
+        fw.write("uphl tzw efxmbq rimx ");
+        fw.close();
+
+        File file = new File("texts/cat.txt");
+        File encrypted = vc.encrypt("spotti", file);
+        FileAssert.assertEquals(correct, encrypted);
     }
 
     @Test
-    public void simpleEncryptionIsCorrect() {
-        vc.encrypt("flower", "cats are pretty cute");
-        assertEquals("Original: CATSAREPRETTYCUTE\nEncrypted: HLHOEIJAFAXKDNIPI\n", outContent.toString());
+    public void simpleTextWithSomeSpecialCharactersIsCorrect() throws IOException {
+        File correct = new File("texts/uni_correct.txt");
+        FileWriter fw = new FileWriter("texts/uni_correct.txt");
+        fw.write("a hhnwg udainbwg gvbmfrs bg cfxjxkaaim hy pwagbgsa. x zbdm ai oempgjua lbmsmbgo ah dkxbln hhnoz. ");
+        fw.close();
+
+        File file = new File("texts/uni.txt");
+        File encrypted = vc.encrypt("spotti", file);
+        FileAssert.assertEquals(correct, encrypted);
     }
 
 
