@@ -38,8 +38,11 @@ The main data structures are arrays, since the message needs to be encrypted let
 ### Sources
 
 http://rumkin.com/tools/cipher/vigenere.php
+
 http://rumkin.com/tools/cipher/vigenere-keyed.php
+
 https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
+
 
 
 
