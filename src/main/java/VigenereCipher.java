@@ -1,29 +1,38 @@
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class VigenereCipher {
 
-    char[][] matrix;
-    private String key;
-    String keystream;
-    private String originalText;
-    private String textWithoutSpaces;
+    char[][] tableau;
+    char[] chars = {'A','B','C','D','E','F','G','H','I','J','K','L'
+            ,'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+    /**
+     * list currently used for finding indexes for chars
+     */
     private ArrayList<Character> characters;
 
+
+    /**
+     *  creates the tableau
+     */
     public VigenereCipher() {
-        this.matrix = new char[26][26];
+        this.tableau = new char[26][26];
         characters = new ArrayList<Character>();
-        char[] chars = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
         int index = 0;
 
         for (int y = 0; y < 26; y++) {
             for (int x = 0; x < 26; x++) {
-                matrix[y][x] = chars[index];
+                tableau[y][x] = chars[index];
 
                 if (y == 0) {
                     characters.add(chars[index]);
                 }
-
                 index++;
             }
             index = 0;
@@ -42,28 +51,50 @@ public class VigenereCipher {
         return chars;
     }
 
-    public void encrypt(String key, String text) {
-        String encryptedMsg = "";
-        this.key = key.toUpperCase();
-        this.originalText = text.toUpperCase();
-        this.textWithoutSpaces = text.toUpperCase().replaceAll("\\s+","");
+    public File encrypt(String key, File textFile) throws IOException {
 
-        keystream = createKeystream(textWithoutSpaces);
+        File encrypted = new File("texts/" + key + ".txt");
+        Scanner scanner = new Scanner(textFile);
+        FileWriter fw = new FileWriter(encrypted);
+        int keyLength = key.length();
 
-        char[] textInCharArray = textWithoutSpaces.toCharArray();
-        char[] keystreamInArray = keystream.toCharArray();
+        char[] keyInArray = key.toCharArray();
+        int index = 0;
 
+        while (scanner.hasNext()) {
+            String word = scanner.next();
+            char[] wordInArray = word.toCharArray();
 
-        for (int i = 0; i < textInCharArray.length; i++) {
-            char charX = textInCharArray[i];
-            char charY = keystreamInArray[i];
+            for (int i = 0; i < wordInArray.length; i++) {
 
-            encryptedMsg += matrix[characters.indexOf(charY)][characters.indexOf(charX)];
+                Character charX = wordInArray[i];
+                charX = Character.toUpperCase(charX);
+
+                if (!characters.contains(charX)) {
+                    fw.write(charX);
+                    continue;
+                }
+
+                Character charY = keyInArray[index];
+                charY = Character.toUpperCase(charY);
+
+                Character letter = tableau[characters.indexOf(charY)][characters.indexOf(charX)];
+
+                fw.write(Character.toLowerCase(letter));
+
+                index++;
+                if (index == keyLength) {
+                    index = 0;
+                }
+            }
+            fw.write(" ");
         }
-        System.out.println("Original: " + this.textWithoutSpaces);
-        System.out.println("Encrypted: " + encryptedMsg);
+        fw.close();
+
+        return encrypted;
     }
 
+    /*
     private String createKeystream(String text) {
         String keystream = "";
 
@@ -81,6 +112,7 @@ public class VigenereCipher {
 
         return keystream;
     }
+    */
 
 
 }
