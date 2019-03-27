@@ -1,3 +1,4 @@
+package algos;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -5,9 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class VigenereCipher {
+public class NormalVigenere {
 
-    char[][] tableau;
+    public char[][] tableau;
     char[] chars = {'A','B','C','D','E','F','G','H','I','J','K','L'
             ,'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
@@ -20,7 +21,7 @@ public class VigenereCipher {
     /**
      *  creates the tableau
      */
-    public VigenereCipher() {
+    public NormalVigenere() {
         this.tableau = new char[26][26];
         characters = new ArrayList<Character>();
 

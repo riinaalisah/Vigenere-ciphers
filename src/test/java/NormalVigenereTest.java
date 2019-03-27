@@ -1,3 +1,4 @@
+import algos.NormalVigenere;
 import junitx.framework.FileAssert;
 import org.junit.Before;
 import org.junit.Test;
@@ -6,14 +7,14 @@ import java.io.*;
 
 import static org.junit.Assert.assertEquals;
 
-public class VigenereCipherTest {
+public class NormalVigenereTest {
 
-    VigenereCipher vc;
+    NormalVigenere vc;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
     public void setUp() {
-        vc = new VigenereCipher();
+        vc = new NormalVigenere();
     }
 
     @Before
