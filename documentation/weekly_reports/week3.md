@@ -1,7 +1,7 @@
 ## Week 3 report
 
 #### Work hours
-3h
+5h
 
 #### What I did
 ##### Tuesday 26th of March
@@ -11,6 +11,12 @@
 
 ##### Wednesday 27th of March
 - keyed Vigenère: ordering alphabet (first version, still needs fixing)
+
+
+##### Thursday 28th of March
+- fixes to keyed Vigenère
+- Tableau to its own class
+- Tests for keyed Vigenère and tableau (some fail)
 
 #### Problems, difficulties etc.
 
