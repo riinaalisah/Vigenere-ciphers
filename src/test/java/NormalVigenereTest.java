@@ -16,6 +16,7 @@ public class NormalVigenereTest {
         vc = new NormalVigenere();
     }
 
+
     @Test
     public void tableauIsCorrect() {
         String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n" +
@@ -45,14 +46,15 @@ public class NormalVigenereTest {
                         "YZABCDEFGHIJKLMNOPQRSTUVWX\n" +
                         "ZABCDEFGHIJKLMNOPQRSTUVWXY\n";
         String tableauInString = "";
-        for (int y = 0; y < vc.tableau.length; y++) {
-            for (int x = 0; x < vc.tableau[y].length; x++) {
-                tableauInString += vc.tableau[y][x];
+        for (int y = 0; y < vc.tableau.tableau.length; y++) {
+            for (int x = 0; x < vc.tableau.tableau[y].length; x++) {
+                tableauInString += vc.tableau.tableau[y][x];
             }
             tableauInString += "\n";
         }
         assertEquals(correct, tableauInString);
     }
+
 
     /*
     @Test

@@ -7,11 +7,6 @@ import static org.junit.Assert.assertEquals;
 public class TableauTest {
     Tableau t;
 
-    @Before
-    public void setup() {
-        this.t = new Tableau();
-    }
-
     @Test
     public void normalTableauIsCorrect() {
         String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n" +
@@ -41,11 +36,11 @@ public class TableauTest {
                         "YZABCDEFGHIJKLMNOPQRSTUVWX\n" +
                         "ZABCDEFGHIJKLMNOPQRSTUVWXY\n";
         char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-        char[][] tableau = t.create(alphabet);
+        Tableau tab = new Tableau(alphabet);
         String tableauInString = "";
-        for (int y = 0; y < tableau.length; y++) {
-            for (int x = 0; x < tableau[y].length; x++) {
-                tableauInString += tableau[y][x];
+        for (int y = 0; y < tab.tableau.length; y++) {
+            for (int x = 0; x < tab.tableau[y].length; x++) {
+                tableauInString += tab.tableau[y][x];
             }
             tableauInString += "\n";
         }
@@ -81,11 +76,11 @@ public class TableauTest {
                         "YZAPLETRBCDFGHIJKMNOQSUVWX\n" +
                         "ZAPLETRBCDFGHIJKMNOQSUVWXY\n";
         char[] alphabet = {'A','P','L','E','T','R','B','C','D','F','G','H','I','J','K','M','N','O','Q','S','U','V','W','X','Y','Z'};
-        char[][] correctTableau = t.create(alphabet);
+        Tableau tab = new Tableau(alphabet);
         String tableau = "";
-        for (int y = 0; y < correctTableau.length; y++) {
-            for (int x = 0; x < correctTableau[y].length; x++) {
-                tableau += correctTableau[y][x];
+        for (int y = 0; y < tab.tableau.length; y++) {
+            for (int x = 0; x < tab.tableau[y].length; x++) {
+                tableau += tab.tableau[y][x];
             }
             tableau += "\n";
         }

@@ -2,8 +2,10 @@ package algos;
 
 public class Tableau {
 
-    public char[][] create(char[] alphabet ) {
-        char[][] tableau = new char[26][26];
+    public char[][] tableau;
+
+    public Tableau(char[] alphabet) {
+        tableau = new char[26][26];
         int index = 0;
 
         for (int y = 0; y < 26; y++) {
@@ -14,9 +16,7 @@ public class Tableau {
             index = 0;
             shiftCharsToLeft(alphabet);
         }
-        return tableau;
     }
-
 
     private char[] shiftCharsToLeft(char[] alphabet) {
         Character temp = alphabet[0];

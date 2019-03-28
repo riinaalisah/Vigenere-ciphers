@@ -8,23 +8,23 @@ import java.util.Scanner;
 
 public class NormalVigenere {
 
-    public char[][] tableau;
+    public Tableau tableau;
     char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
     /**
-     * list currently used for finding indexes for alphabet
+     * list currently used for finding indexes for tableau
      */
     private ArrayList<Character> characters;
 
     public NormalVigenere() {
-        Tableau tb = new Tableau();
         characters = new ArrayList<Character>();
         for (int i = 0; i < alphabet.length; i++) {
             characters.add(alphabet[i]);
         }
 
-        tableau = tb.create(alphabet);
+        tableau = new Tableau(alphabet);
     }
 
+    /*
     public File encrypt(String key, File textFile) throws IOException {
 
         File encrypted = new File("texts/" + key + ".txt");
@@ -67,5 +67,6 @@ public class NormalVigenere {
 
         return encrypted;
     }
+    */
 
 }
