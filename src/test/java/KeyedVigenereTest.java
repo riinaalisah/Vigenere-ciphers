@@ -7,30 +7,24 @@ import static junitx.framework.Assert.assertEquals;
 public class KeyedVigenereTest {
     KeyedVigenere kv;
 
-    @Test
-    public void duplicateAlphabetAreRemovedFromKey() {
-        kv = new KeyedVigenere("alfohmelldftssa", "n", "n", "n");
-        String correct = "alfohmedts";
-        String keyWithoutDuplicates = kv.removeDuplicateAlphabetsFromKey("alfohmelldftssa");
-        assertEquals(correct, keyWithoutDuplicates);
-
+    @Before
+    public void setUp() {
+        kv = new KeyedVigenere();
     }
 
     @Test
-    public void alphabetStringIsCorrectWithNoChoicesPicked() {
-        kv = new KeyedVigenere("appletreecat", "n", "n", "n");
-        String correct = "APLETRCBDFGHIJKMNOQSUVWXYZ";
-        String alphabet = "";
-        for (int i = 0; i < kv.alphabet.length; i++) {
-            alphabet += kv.alphabet[i];
-        }
-        assertEquals(correct, alphabet);
+    public void duplicateAlphabetAreRemovedFromKey() {
+        kv.setChoicesAndKey("alfohmelldftssa", "n", "n", "n");
+        String correct = "alfohmedts";
+        kv.removeDuplicateAlphabetsFromKey();
+        assertEquals(correct, kv.key);
+
     }
 
     @Test
     public void reversedAlphabetIsCorrect() {
-        kv = new KeyedVigenere("lemon", "n", "y", "n");
         String correct = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+        kv.reverseAlphabet();
         String alphInString = "";
         for (int i = 0; i < kv.alphabet.length; i++) {
             alphInString += kv.alphabet[i];
@@ -39,65 +33,77 @@ public class KeyedVigenereTest {
     }
 
     @Test
+    public void alphabetStringIsCorrectWithNoChoicesPicked() {
+        kv.setChoicesAndKey("appletreecat", "n", "n", "n");
+        String correct = "APLETRCBDFGHIJKMNOQSUVWXYZ";
+        kv.setAlphabet();
+        String alphabet = checkAlphabetArray();
+        assertEquals(correct, alphabet);
+    }
+
+
+    @Test
     public void keyIsReversedCorrectly() {
-        kv = new KeyedVigenere("appletreecat", "y", "n", "n");
+        kv.setChoicesAndKey("appletreecat", "y", "n", "n");
+        kv.setAlphabet();
         String correct = "tacerlp";
         assertEquals(correct, kv.key);
     }
 
     @Test
     public void keyIsInsertedToTheRightSideOfAlphabet() {
-        kv = new KeyedVigenere("appletreecat", "n", "n", "y");
+        kv.setChoicesAndKey("appletreecat", "n", "n", "y");
+        kv.setAlphabet();
         String correct = "BDFGHIJKMNOQSUVWXYZAPLETRC";
-        String alphabet = "";
-        for (int i = 0; i < kv.alphabet.length; i++) {
-            alphabet += kv.alphabet[i];
-        }
+        String alphabet = checkAlphabetArray();
         assertEquals(correct, alphabet);
     }
 
     @Test
     public void reversedKeyAndReversedAlphabetCorrect() {
-        kv = new KeyedVigenere("appletreecat", "y", "y", "n");
+        kv.setChoicesAndKey("appletreecat", "y", "y", "n");
+        kv.setAlphabet();
+
         String correct = "TACERLPZYXWVUSQONMKJIHGFDB";
-        String alphabet = "";
-        for (int i = 0; i < kv.alphabet.length; i++) {
-            alphabet += kv.alphabet[i];
-        }
+        String alphabet = checkAlphabetArray();
         assertEquals(correct, alphabet);
     }
 
     @Test
     public void reversedAlphabetAndKeyToRightAlphabetCorrect() {
-        kv = new KeyedVigenere("appletreecat", "n", "y", "y");
+        kv.setChoicesAndKey("appletreecat", "n", "y", "y");
+        kv.setAlphabet();
         String correct = "ZYXWVUSQONMKJIHGFDBAPLETRC";
-        String alphabet = "";
-        for (int i = 0; i < kv.alphabet.length; i++) {
-            alphabet += kv.alphabet[i];
-        }
+        String alphabet = checkAlphabetArray();
         assertEquals(correct, alphabet);
     }
 
     @Test
     public void reversedKeyAndkeyToRightAlphabetCorrect() {
-        kv = new KeyedVigenere("appletreecat", "y", "n", "y");
+      //  kv = new KeyedVigenere("appletreecat", "y", "n", "y");
+        kv.setChoicesAndKey("appletreecat", "y", "n", "y");
+        kv.setAlphabet();
         String correct = "BDFGHIJKMNOQSUVWXYZTACERLP";
-        String alphabet = "";
-        for (int i = 0; i < kv.alphabet.length; i++) {
-            alphabet += kv.alphabet[i];
-        }
+        String alphabet = checkAlphabetArray();
         assertEquals(correct, alphabet);
     }
 
     @Test
     public void alphabetCorrectAllChoicesPicked() {
-        kv = new KeyedVigenere("appletreecat", "y", "y", "y");
+       // kv = new KeyedVigenere("appletreecat", "y", "y", "y");
+        kv.setChoicesAndKey("appletreecat", "y", "y", "y");
+        kv.setAlphabet();
         String correct = "ZYXWVUSQONMKJIHGFDBTACERLP";
+        String alphabet = checkAlphabetArray();
+        assertEquals(correct, alphabet);
+    }
+
+    private String checkAlphabetArray() {
         String alphabet = "";
         for (int i = 0; i < kv.alphabet.length; i++) {
             alphabet += kv.alphabet[i];
         }
-        assertEquals(correct, alphabet);
+        return alphabet;
     }
 
 

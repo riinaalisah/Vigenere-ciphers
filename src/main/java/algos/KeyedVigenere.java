@@ -4,16 +4,33 @@ import java.util.ArrayList;
 
 public class KeyedVigenere {
 
-    char[][] tableau;
     public String key;
+    String keyInReverse;
+    String alphInReverse;
+    String keyToRight;
+
+    Tableau tableau;
     public char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
     private ArrayList<Character> characters;
 
-    public KeyedVigenere(String key, String keyInReverse, String alphInReverse, String keyToRight) {
-        this.key = key;
-        Tableau tb = new Tableau();
+    public KeyedVigenere() {
         characters = new ArrayList<>();
 
+
+    }
+
+    public void setChoicesAndKey(String key, String keyInReverse, String alphInReverse, String keyToRight) {
+        this.key = key;
+        this.keyInReverse = keyInReverse;
+        this.alphInReverse = alphInReverse;
+        this.keyToRight = keyToRight;
+    }
+
+    public void setAlphabet() {
+
+        if (this.alphInReverse.equals("y")) {
+            reverseAlphabet();
+        }
         /**
          * adds alphabet to list
          */
@@ -21,29 +38,26 @@ public class KeyedVigenere {
             characters.add(alphabet[i]);
         }
 
-        if (alphInReverse.equals("y")) {
-            reverseAlphabet();
-        }
-        if (keyInReverse.equals("y")) {
-            key = reverseKey(this.key);
+        if (this.keyInReverse.equals("y")) {
+            reverseKey();
         }
 
-        this.key = removeDuplicateAlphabetsFromKey(key);
+        removeDuplicateAlphabetsFromKey();
 
-        if (keyToRight.equals("y")) {
-            insertKeyToRight(this.key);
+        if (this.keyToRight.equals("y")) {
+            insertKeyToRight();
         } else {
-            insertKeyToLeft(this.key);
+            insertKeyToLeft();
         }
 
         /**
          * creates tableau
          */
-        tableau = tb.create(alphabet);
-
+        Tableau tb = new Tableau(alphabet);
     }
 
-    public String removeDuplicateAlphabetsFromKey(String key) {
+
+    public void removeDuplicateAlphabetsFromKey() {
         String newKey = "";
         ArrayList<Character> foundChars = new ArrayList<>();
         char[] parts = key.toCharArray();
@@ -56,45 +70,43 @@ public class KeyedVigenere {
             newKey += c;
         }
 
-        return newKey;
+        this.key = newKey;
     }
 
     /**
-     * puts alphabet in reverse order
+     * puts tableau in reverse order
      */
-    private void reverseAlphabet() {
+    public void reverseAlphabet() {
         char[] newAlphabet = new char[26];
         int index = 0;
-        for (int i = alphabet.length - 1; i >= 0; i--) {
-            newAlphabet[index] = alphabet[i];
+        for (int i = this.alphabet.length - 1; i >= 0; i--) {
+            newAlphabet[index] = this.alphabet[i];
             index++;
         }
 
-        alphabet = newAlphabet;
+        this.alphabet = newAlphabet;
     }
 
     /**
-     * puts entered key in reverse order
-     * @param key
-     * @return
+     * puts key in reverse order
      */
-    public String reverseKey(String key) {
+    public void reverseKey() {
         char[] parts = key.toCharArray();
         String reversed = "";
         for (int i = parts.length - 1; i >= 0; i--) {
             reversed += parts[i];
         }
-        return reversed;
+        this.key = reversed;
     }
 
-    private void insertKeyToRight(String key) {
+    private void insertKeyToRight() {
 
         char[] keyParts = key.toCharArray();
         removeKeyCharsFromAlphabetList(keyParts);
 
         /**
-         * Fills alphabet array after removing alphabet in the key from list.
-         * Starts from index 0 so the right side of alphabet stays empty for alphabet in the key.
+         * Fills tableau array after removing tableau in the key from list.
+         * Starts from index 0 so the right side of tableau stays empty for tableau in the key.
          */
         char[] newAlphabet = new char[26];
         for (int i = 0; i < characters.size(); i++) {
@@ -102,7 +114,7 @@ public class KeyedVigenere {
         }
 
         /**
-         * Inserts alphabet in the key to the right side of alphabet.
+         * Inserts tableau in the key to the right side of tableau.
          */
         int startIndex = newAlphabet.length - keyParts.length;
         for (int i = 0; i < keyParts.length; i++) {
@@ -114,13 +126,13 @@ public class KeyedVigenere {
 
     }
 
-    private void insertKeyToLeft(String key) {
+    private void insertKeyToLeft() {
         char[] keyParts = key.toCharArray();
         removeKeyCharsFromAlphabetList(keyParts);
 
         /**
-         * Fills alphabet array after removing alphabet in the key from list.
-         * Leaves beginning of array empty for alphabet in key.
+         * Fills tableau array after removing tableau in the key from list.
+         * Leaves beginning of array empty for tableau in key.
          */
         char[] newAlphabet = new char[26];
         int startIndex = keyParts.length;
@@ -131,7 +143,7 @@ public class KeyedVigenere {
         }
 
         /**
-         * Inserts alphabet to the beginning of alphabet.
+         * Inserts tableau to the beginning of tableau.
          */
         for (int i = 0; i < keyParts.length; i++) {
             newAlphabet[i] = Character.toUpperCase(keyParts[i]);
@@ -140,7 +152,7 @@ public class KeyedVigenere {
     }
 
     /**
-     * Removes alphabet in the key from character list
+     * Removes tableau in the key from character list
      * @param keyParts
      */
     private void removeKeyCharsFromAlphabetList(char[] keyParts) {
