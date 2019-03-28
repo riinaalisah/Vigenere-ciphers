@@ -1,7 +1,7 @@
 ## Week 3 report
 
 #### Work hours
-5h
+7h
 
 #### What I did
 ##### Tuesday 26th of March
@@ -16,7 +16,8 @@
 ##### Thursday 28th of March
 - fixes to keyed Vigenère
 - Tableau to its own class
-- Tests for keyed Vigenère and tableau (some fail)
+- Tests for keyed Vigenère and tableau
+- making UI better
 
 #### Problems, difficulties etc.
 
