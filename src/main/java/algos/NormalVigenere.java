@@ -9,47 +9,20 @@ import java.util.Scanner;
 public class NormalVigenere {
 
     public char[][] tableau;
-    char[] chars = {'A','B','C','D','E','F','G','H','I','J','K','L'
-            ,'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-
+    char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
     /**
-     * list currently used for finding indexes for chars
+     * list currently used for finding indexes for alphabet
      */
     private ArrayList<Character> characters;
 
-
-    /**
-     *  creates the tableau
-     */
     public NormalVigenere() {
-        this.tableau = new char[26][26];
+        Tableau tb = new Tableau();
         characters = new ArrayList<Character>();
-
-        int index = 0;
-
-        for (int y = 0; y < 26; y++) {
-            for (int x = 0; x < 26; x++) {
-                tableau[y][x] = chars[index];
-
-                if (y == 0) {
-                    characters.add(chars[index]);
-                }
-                index++;
-            }
-            index = 0;
-            shiftCharsToLeft(chars);
+        for (int i = 0; i < alphabet.length; i++) {
+            characters.add(alphabet[i]);
         }
-    }
 
-    private char[] shiftCharsToLeft(char[] chars) {
-        Character temp = chars[0];
-
-        for (int i = 0; i < 25; i++) {
-            chars[i] = chars[i+1];
-        }
-        chars[25] = temp;
-
-        return chars;
+        tableau = tb.create(alphabet);
     }
 
     public File encrypt(String key, File textFile) throws IOException {

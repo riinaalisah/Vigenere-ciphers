@@ -10,58 +10,51 @@ import static org.junit.Assert.assertEquals;
 public class NormalVigenereTest {
 
     NormalVigenere vc;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
     public void setUp() {
         vc = new NormalVigenere();
     }
 
-    @Before
-    public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
-    }
-
     @Test
     public void tableauIsCorrect() {
         String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n" +
-                         "BCDEFGHIJKLMNOPQRSTUVWXYZA\n" +
-                         "CDEFGHIJKLMNOPQRSTUVWXYZAB\n" +
-                         "DEFGHIJKLMNOPQRSTUVWXYZABC\n" +
-                         "EFGHIJKLMNOPQRSTUVWXYZABCD\n" +
-                         "FGHIJKLMNOPQRSTUVWXYZABCDE\n" +
-                         "GHIJKLMNOPQRSTUVWXYZABCDEF\n" +
-                         "HIJKLMNOPQRSTUVWXYZABCDEFG\n" +
-                         "IJKLMNOPQRSTUVWXYZABCDEFGH\n" +
-                         "JKLMNOPQRSTUVWXYZABCDEFGHI\n" +
-                         "KLMNOPQRSTUVWXYZABCDEFGHIJ\n" +
-                         "LMNOPQRSTUVWXYZABCDEFGHIJK\n" +
-                         "MNOPQRSTUVWXYZABCDEFGHIJKL\n" +
-                         "NOPQRSTUVWXYZABCDEFGHIJKLM\n" +
-                         "OPQRSTUVWXYZABCDEFGHIJKLMN\n" +
-                         "PQRSTUVWXYZABCDEFGHIJKLMNO\n" +
-                         "QRSTUVWXYZABCDEFGHIJKLMNOP\n" +
-                         "RSTUVWXYZABCDEFGHIJKLMNOPQ\n" +
-                         "STUVWXYZABCDEFGHIJKLMNOPQR\n" +
-                         "TUVWXYZABCDEFGHIJKLMNOPQRS\n" +
-                         "UVWXYZABCDEFGHIJKLMNOPQRST\n" +
-                         "VWXYZABCDEFGHIJKLMNOPQRSTU\n" +
-                         "WXYZABCDEFGHIJKLMNOPQRSTUV\n" +
-                         "XYZABCDEFGHIJKLMNOPQRSTUVW\n" +
-                         "YZABCDEFGHIJKLMNOPQRSTUVWX\n" +
-                         "ZABCDEFGHIJKLMNOPQRSTUVWXY\n";
-
-        String tableau = "";
+                        "BCDEFGHIJKLMNOPQRSTUVWXYZA\n" +
+                        "CDEFGHIJKLMNOPQRSTUVWXYZAB\n" +
+                        "DEFGHIJKLMNOPQRSTUVWXYZABC\n" +
+                        "EFGHIJKLMNOPQRSTUVWXYZABCD\n" +
+                        "FGHIJKLMNOPQRSTUVWXYZABCDE\n" +
+                        "GHIJKLMNOPQRSTUVWXYZABCDEF\n" +
+                        "HIJKLMNOPQRSTUVWXYZABCDEFG\n" +
+                        "IJKLMNOPQRSTUVWXYZABCDEFGH\n" +
+                        "JKLMNOPQRSTUVWXYZABCDEFGHI\n" +
+                        "KLMNOPQRSTUVWXYZABCDEFGHIJ\n" +
+                        "LMNOPQRSTUVWXYZABCDEFGHIJK\n" +
+                        "MNOPQRSTUVWXYZABCDEFGHIJKL\n" +
+                        "NOPQRSTUVWXYZABCDEFGHIJKLM\n" +
+                        "OPQRSTUVWXYZABCDEFGHIJKLMN\n" +
+                        "PQRSTUVWXYZABCDEFGHIJKLMNO\n" +
+                        "QRSTUVWXYZABCDEFGHIJKLMNOP\n" +
+                        "RSTUVWXYZABCDEFGHIJKLMNOPQ\n" +
+                        "STUVWXYZABCDEFGHIJKLMNOPQR\n" +
+                        "TUVWXYZABCDEFGHIJKLMNOPQRS\n" +
+                        "UVWXYZABCDEFGHIJKLMNOPQRST\n" +
+                        "VWXYZABCDEFGHIJKLMNOPQRSTU\n" +
+                        "WXYZABCDEFGHIJKLMNOPQRSTUV\n" +
+                        "XYZABCDEFGHIJKLMNOPQRSTUVW\n" +
+                        "YZABCDEFGHIJKLMNOPQRSTUVWX\n" +
+                        "ZABCDEFGHIJKLMNOPQRSTUVWXY\n";
+        String tableauInString = "";
         for (int y = 0; y < vc.tableau.length; y++) {
             for (int x = 0; x < vc.tableau[y].length; x++) {
-                tableau += vc.tableau[y][x];
+                tableauInString += vc.tableau[y][x];
             }
-            tableau += "\n";
+            tableauInString += "\n";
         }
-        assertEquals(correct, tableau);
+        assertEquals(correct, tableauInString);
     }
 
-
+    /*
     @Test
     public void simpleTextWithOnlyAlphabetIsCorrect() throws IOException {
         File correct = new File("texts/cat_correct.txt");
@@ -85,6 +78,7 @@ public class NormalVigenereTest {
         File encrypted = vc.encrypt("spotti", file);
         FileAssert.assertEquals(correct, encrypted);
     }
+    */
 
 
 }
