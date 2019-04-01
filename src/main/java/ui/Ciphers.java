@@ -1,5 +1,6 @@
 package ui;
 
+import algos.Encryption;
 import algos.KeyedVigenere;
 import algos.NormalVigenere;
 
@@ -11,6 +12,8 @@ import java.nio.Buffer;
 import java.util.Scanner;
 
 public class Ciphers {
+
+    static Encryption encryption = new Encryption();
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -73,11 +76,14 @@ public class Ciphers {
     }
 
     public static void normalVigenereChosen(BufferedReader reader, File file) throws IOException {
-        NormalVigenere vc = new NormalVigenere();
+        NormalVigenere nv = new NormalVigenere();
         System.out.println("You chose normal Vigenère cipher.");
         System.out.println("Enter passphrase:");
         String passphrase = reader.readLine();
-        //vc.encrypt(passphrase, file);
+
+        File encrypted = encryption.encrypt(passphrase, file, nv.tableau, nv.characters);
+        System.out.println("Encryption complete");
+
     }
 
     public static void keyedVigenereChosen(BufferedReader reader, File file) throws IOException {
@@ -132,6 +138,14 @@ public class Ciphers {
         String passphrase = reader.readLine();
 
         kv.setChoicesAndKey(key, keyInReverse, alphInReverse, keyToRight);
+        kv.setAlphabet();
+
+        for (int i = 0; i < kv.characters.size(); i++) {
+            System.out.print(kv.characters.get(i));
+        }
+
+        encryption.encrypt(passphrase, file, kv.tableau, kv.characters);
+        System.out.println("Encryption complete");
     }
 
     public static boolean checkInputForChoices(String input) {

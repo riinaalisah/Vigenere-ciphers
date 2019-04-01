@@ -13,7 +13,7 @@ public class NormalVigenere {
     /**
      * list currently used for finding indexes for tableau
      */
-    private ArrayList<Character> characters;
+    public ArrayList<Character> characters;
 
     public NormalVigenere() {
         characters = new ArrayList<Character>();

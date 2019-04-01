@@ -9,9 +9,9 @@ public class KeyedVigenere {
     String alphInReverse;
     String keyToRight;
 
-    Tableau tableau;
+    public Tableau tableau;
     public char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-    private ArrayList<Character> characters;
+    public ArrayList<Character> characters;
 
     public KeyedVigenere() {
         characters = new ArrayList<>();
@@ -53,7 +53,7 @@ public class KeyedVigenere {
         /**
          * creates tableau
          */
-        Tableau tb = new Tableau(alphabet);
+        tableau = new Tableau(alphabet);
     }
 
 
@@ -119,6 +119,7 @@ public class KeyedVigenere {
         int startIndex = newAlphabet.length - keyParts.length;
         for (int i = 0; i < keyParts.length; i++) {
             newAlphabet[startIndex] = Character.toUpperCase(keyParts[i]);
+            characters.add(startIndex, Character.toUpperCase(keyParts[i]));
             startIndex++;
         }
 
@@ -147,6 +148,7 @@ public class KeyedVigenere {
          */
         for (int i = 0; i < keyParts.length; i++) {
             newAlphabet[i] = Character.toUpperCase(keyParts[i]);
+            characters.add(i, Character.toUpperCase((keyParts[i])));
         }
         alphabet = newAlphabet;
     }
