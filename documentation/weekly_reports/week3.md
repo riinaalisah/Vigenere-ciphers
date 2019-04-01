@@ -23,5 +23,5 @@
 Everything has been pretty straightforward, no problems
 
 #### What next
-- encyption to its own class
+- encryption to its own class
 - begin working on data structures

@@ -1,53 +1,55 @@
 package algos;
 
+import IO.FileHandler;
+
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Encryption {
 
     public File encrypt(String passphrase, File textFile, Tableau tableau, ArrayList<Character> characters) throws IOException {
 
-        File encrypted = new File("texts/" + passphrase + ".txt");
-        Scanner scanner = new Scanner(textFile);
-        FileWriter fw = new FileWriter(encrypted);
-        int keyLength = passphrase.length();
+        FileHandler fileHandler = new FileHandler(textFile.getName());
+        int passphraseLength = passphrase.length();
+        char[] passphraseInArray = passphrase.toCharArray();
 
-        char[] keyInArray = passphrase.toCharArray();
         int index = 0;
 
-        while (scanner.hasNext()) {
-            String word = scanner.next();
+        while (true) {
+            String word = fileHandler.nextWord();
+            if (word.equals("")) {
+                break;
+            }
             char[] wordInArray = word.toCharArray();
+            String wordToWrite = "";
 
             for (int i = 0; i < wordInArray.length; i++) {
 
                 Character charX = wordInArray[i];
                 charX = Character.toUpperCase(charX);
 
+
                 if (!characters.contains(charX)) {
-                    fw.write(charX);
+                    wordToWrite += charX;
                     continue;
                 }
 
-                Character charY = keyInArray[index];
+                Character charY = passphraseInArray[index];
                 charY = Character.toUpperCase(charY);
 
                 Character letter = tableau.tableau[characters.indexOf(charY)][characters.indexOf(charX)];
-
-                fw.write(Character.toLowerCase(letter));
+                wordToWrite += letter;
 
                 index++;
-                if (index == keyLength) {
+                if (index == passphraseLength) {
                     index = 0;
                 }
             }
-            fw.write(" ");
+            fileHandler.writeWord(wordToWrite + " ");
         }
-        fw.close();
+        fileHandler.close();
 
-        return encrypted;
+        return fileHandler.getOutputFile();
     }
 }
