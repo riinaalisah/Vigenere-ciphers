@@ -12,6 +12,10 @@ public class FileHandler {
 
     public FileHandler(String fileName, boolean encrypt) throws IOException {
         this.inputFile = new File("texts/" + fileName);
+
+        String[] fileNameInArray = fileName.split("\\.");
+        fileName = fileNameInArray[0];
+
         this.reader = new FileReader(inputFile);
         if (encrypt) {
             this.outputFile = new File("texts/" + fileName + ".encrypted.txt");
@@ -42,7 +46,6 @@ public class FileHandler {
     public void writeWord(String word) throws IOException {
         writer.write(word);
     }
-
 
     public void close() throws IOException {
         this.writer.close();
