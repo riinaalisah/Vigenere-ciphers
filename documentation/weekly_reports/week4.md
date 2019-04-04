@@ -10,6 +10,9 @@
 - fixes to Keyed Vigenère
 - started working on FileHandler class, should work now ok
 
+##### Thursday 4th of April
+- decry
+
 
 #### Problems, difficulties etc.
 

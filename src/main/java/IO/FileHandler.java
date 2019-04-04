@@ -10,10 +10,15 @@ public class FileHandler {
     FileWriter writer;
 
 
-    public FileHandler(String fileName) throws IOException {
+    public FileHandler(String fileName, boolean encrypt) throws IOException {
         this.inputFile = new File("texts/" + fileName);
         this.reader = new FileReader(inputFile);
-        this.outputFile = new File("texts/" + fileName + "." + "encrypted.txt");
+        if (encrypt) {
+            this.outputFile = new File("texts/" + fileName + ".encrypted.txt");
+        } else {
+            this.outputFile = new File("texts/" + fileName + ".decrypted.txt");
+        }
+
         this.writer = new FileWriter(outputFile);
     }
 
@@ -31,7 +36,6 @@ public class FileHandler {
             }
             word += character;
         }
-        System.out.println("NEXT WORD " + word);
         return word;
     }
 

@@ -1,19 +1,17 @@
 package ui;
 
-import algos.Encryption;
-import algos.KeyedVigenere;
-import algos.NormalVigenere;
+import algos.*;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Ciphers {
 
     static Encryption encryption = new Encryption();
+    static Decryption decryption = new Decryption();
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -21,17 +19,51 @@ public class Ciphers {
         System.out.println("WELCOME TO VIGENÈRE CIPHERS!");
         System.out.println();
 
+
         File file = chooseFile(reader);
         System.out.println();
-        int cipherNumber = chooseCipher(reader);
+
+        int encryptOrDecrypt = chooseEncryptOrDecrypt(reader);
         System.out.println();
 
-        if (cipherNumber == 1) {
-            normalVigenereChosen(reader, file);
 
-        } else if (cipherNumber == 2) {
-            keyedVigenereChosen(reader, file);
+        if (encryptOrDecrypt == 2) {
+            decryptChosen(reader, file);
+
+        } else {
+            int cipherNumber = chooseCipher(reader);
+            System.out.println();
+
+            if (cipherNumber == 1) {
+                normalVigenereChosen(reader, file);
+
+            } else if (cipherNumber == 2) {
+                keyedVigenereChosen(reader, file);
+            }
         }
+
+
+    }
+
+    public static int chooseEncryptOrDecrypt(BufferedReader reader) {
+        int encryprOrDecrypt;
+        while (true) {
+            System.out.println("Do you want to encrypt or decrypt the file? Enter the correspondent number:");
+            System.out.println("1 - Encrypt");
+            System.out.println("2 - Decrypt");
+
+            try {
+                encryprOrDecrypt = Integer.parseInt(reader.readLine());
+                if (encryprOrDecrypt != 1 && encryprOrDecrypt != 2) {
+                    printInvalidInput();
+                } else {
+                    break;
+                }
+            } catch (Exception e) {
+                printInvalidInput();
+            }
+        }
+        return encryprOrDecrypt;
     }
 
     public static File chooseFile(BufferedReader reader) throws IOException {
@@ -50,7 +82,6 @@ public class Ciphers {
                 break;
             }
         }
-
         return new File("texts/" + fileName);
     }
 
@@ -154,6 +185,21 @@ public class Ciphers {
             invalid = true;
         }
         return invalid;
+    }
+
+    public static void decryptChosen(BufferedReader reader, File file) throws IOException {
+        System.out.println("Enter the passphrase ");
+        String passphrase = reader.readLine();
+
+        char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        ArrayList<Character> characters ;
+        characters = new ArrayList<Character>();
+        for (int i = 0; i < alphabet.length; i++) {
+            characters.add(alphabet[i]);
+        }
+
+        Tableau tableau = new Tableau(alphabet);
+        decryption.decrypt(passphrase, file, tableau, characters);
     }
 
     public static void printInvalidInput() {
