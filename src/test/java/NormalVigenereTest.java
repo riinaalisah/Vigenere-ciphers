@@ -1,4 +1,4 @@
-import Ciphers.algos.NormalVigenere;
+import Ciphers.Algos.NormalVigenere;
 import org.junit.Before;
 import org.junit.Test;
 

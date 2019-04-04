@@ -1,4 +1,4 @@
-package Ciphers.algos;
+package Ciphers.Algos;
 
 import Ciphers.Util.Tableau;
 

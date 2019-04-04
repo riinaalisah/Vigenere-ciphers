@@ -1,4 +1,4 @@
-import Ciphers.algos.KeyedVigenere;
+import Ciphers.Algos.KeyedVigenere;
 import org.junit.Before;
 import org.junit.Test;
 

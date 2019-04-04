@@ -1,7 +1,7 @@
-## Week 3 report
+## Week 4 report
 
 #### Work hours
-2h
+3,5h
 
 #### What I did
 
@@ -11,7 +11,9 @@
 - started working on FileHandler class, should work now ok
 
 ##### Thursday 4th of April
-- decry
+- decryption
+- updating UI
+- creating test files for testing
 
 
 #### Problems, difficulties etc.
