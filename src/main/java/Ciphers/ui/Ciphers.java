@@ -1,6 +1,10 @@
 package Ciphers.ui;
 
 import Ciphers.Util.Tableau;
+import Ciphers.algos.Decryption;
+import Ciphers.algos.Encryption;
+import Ciphers.algos.KeyedVigenere;
+import Ciphers.algos.NormalVigenere;
 
 import java.io.BufferedReader;
 import java.io.File;
