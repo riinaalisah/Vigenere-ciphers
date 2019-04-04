@@ -1,9 +1,6 @@
-import algos.NormalVigenere;
-import junitx.framework.FileAssert;
+import Ciphers.algos.NormalVigenere;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.*;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,6 @@
-package algos;
+package Ciphers.algos;
+
+import Ciphers.Util.Tableau;
 
 import java.util.ArrayList;
 

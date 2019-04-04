@@ -1,4 +1,4 @@
-package IO;
+package Ciphers.IO;
 
 import java.io.*;
 

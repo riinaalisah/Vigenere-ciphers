@@ -1,5 +1,4 @@
-import algos.Tableau;
-import org.junit.Before;
+import Ciphers.Util.Tableau;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

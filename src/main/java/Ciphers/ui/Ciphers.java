@@ -1,6 +1,6 @@
-package ui;
+package Ciphers.ui;
 
-import algos.*;
+import Ciphers.Util.Tableau;
 
 import java.io.BufferedReader;
 import java.io.File;

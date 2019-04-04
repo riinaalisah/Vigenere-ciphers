@@ -1,4 +1,4 @@
-package algos;
+package Ciphers.Util;
 
 public class Tableau {
 
