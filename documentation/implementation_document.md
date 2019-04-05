@@ -30,8 +30,13 @@ Decryption works mostly the same way as encryption does. The passphrase is read 
 
 File handler class is in charge of reading the file chosen by user, and creating and writing the encrypted/decrypted text
  into a new file. It reads and writes files word by word.
+ 
+#### Tableau
+Tableau is the key element of the ciphers. Tableau is a two-dimensional array and it is created by inserting 
+alphabet key to every row. After every row the alphabet switch places to left, so the first alphabet is the last alphabet
+ on the next row.
 
-#### User Interface
+#### User Interface (class *Ciphers*)
 
 UI is a simple text based interface with a few steps:
 1. User chooses the file to encrypt/decrypt
