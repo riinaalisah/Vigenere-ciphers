@@ -6,8 +6,13 @@ The aim for this project is to create a program that can encrypt messages using 
 
 ---
 
+### Documentation
 
 [Specification document](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/specification_document.md)
+
+[Implementation document](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/implementation_document.md)
+
+[Testing document](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/testing_document.md)
 
 ---
 
