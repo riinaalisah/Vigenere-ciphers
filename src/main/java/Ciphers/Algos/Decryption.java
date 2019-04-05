@@ -7,8 +7,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class Decryption {
 
+    /**
+     * Method used for decryption
+     * @param passphrase Used for row indexing
+     * @param textFile File to decrypt
+     * @param tableau Used to find correct letters for decrypted text
+     * @param characters List of available characters
+     * @return Decrypted file
+     * @throws IOException
+     */
     public File decrypt(String passphrase, File textFile, Tableau tableau, ArrayList<Character> characters) throws IOException {
 
         FileHandler fileHandler = new FileHandler(textFile.getName(), false);

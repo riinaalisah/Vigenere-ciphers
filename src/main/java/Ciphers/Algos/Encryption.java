@@ -9,6 +9,15 @@ import java.util.ArrayList;
 
 public class Encryption {
 
+    /**
+     * Method used for encryption
+     * @param passphrase Used for row indexing
+     * @param textFile File to encrypt
+     * @param tableau Used to find correct letters for encrypted text
+     * @param characters List of available characters
+     * @return
+     * @throws IOException
+     */
     public File encrypt(String passphrase, File textFile, Tableau tableau, ArrayList<Character> characters) throws IOException {
 
         FileHandler fileHandler = new FileHandler(textFile.getName(), true);

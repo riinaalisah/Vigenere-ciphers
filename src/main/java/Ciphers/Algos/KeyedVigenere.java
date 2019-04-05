@@ -52,9 +52,6 @@ public class KeyedVigenere {
             insertKeyToLeft();
         }
 
-        /**
-         * creates tableau
-         */
         tableau = new Tableau(alphabet);
     }
 
@@ -76,7 +73,7 @@ public class KeyedVigenere {
     }
 
     /**
-     * puts tableau in reverse order
+     * Puts tableau in reverse order
      */
     public void reverseAlphabet() {
         char[] newAlphabet = new char[26];
@@ -90,7 +87,7 @@ public class KeyedVigenere {
     }
 
     /**
-     * puts key in reverse order
+     * Puts keyword in reverse order
      */
     public void reverseKey() {
         char[] parts = key.toCharArray();
@@ -101,14 +98,17 @@ public class KeyedVigenere {
         this.key = reversed;
     }
 
+    /**
+     *  Inserts keyword to the right side (end) of the alphabet key
+     */
     private void insertKeyToRight() {
 
         char[] keyParts = key.toCharArray();
         removeKeyCharsFromAlphabetList(keyParts);
 
         /**
-         * Fills tableau array after removing tableau in the key from list.
-         * Starts from index 0 so the right side of tableau stays empty for tableau in the key.
+         * Fills alphabet array after removing characters in the keyword from list.
+         * Starts from index 0 so the right side of array stays empty for characters in the key.
          */
         char[] newAlphabet = new char[26];
         for (int i = 0; i < characters.size(); i++) {
@@ -116,7 +116,7 @@ public class KeyedVigenere {
         }
 
         /**
-         * Inserts tableau in the key to the right side of tableau.
+         * Inserts characters in the keyword to the right side of alphabet key.
          */
         int startIndex = newAlphabet.length - keyParts.length;
         for (int i = 0; i < keyParts.length; i++) {
@@ -129,13 +129,16 @@ public class KeyedVigenere {
 
     }
 
+    /**
+     *  Inserts keyword to the left side (beginning) of the alphabet key
+     */
     private void insertKeyToLeft() {
         char[] keyParts = key.toCharArray();
         removeKeyCharsFromAlphabetList(keyParts);
 
         /**
-         * Fills tableau array after removing tableau in the key from list.
-         * Leaves beginning of array empty for tableau in key.
+         * Fills alphabet array after removing characters in the keyword from list.
+         * Leaves beginning of array empty for characters in keyword.
          */
         char[] newAlphabet = new char[26];
         int startIndex = keyParts.length;
@@ -146,7 +149,7 @@ public class KeyedVigenere {
         }
 
         /**
-         * Inserts tableau to the beginning of tableau.
+         * Inserts characters in thev keyword the to the beginning of the alphabet key.
          */
         for (int i = 0; i < keyParts.length; i++) {
             newAlphabet[i] = Character.toUpperCase(keyParts[i]);
@@ -156,8 +159,8 @@ public class KeyedVigenere {
     }
 
     /**
-     * Removes tableau in the key from character list
-     * @param keyParts
+     * Removes characters in the keyword from character list
+     * @param keyParts Characters in keyword in an array
      */
     private void removeKeyCharsFromAlphabetList(char[] keyParts) {
 

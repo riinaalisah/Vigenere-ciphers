@@ -88,7 +88,6 @@ public class Ciphers {
     }
 
 
-
     public static int chooseCipher() throws IOException {
         int cipherNumber;
         while (true) {
