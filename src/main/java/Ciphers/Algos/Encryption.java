@@ -25,11 +25,14 @@ public class Encryption {
         char[] passphraseInArray = passphrase.toCharArray();
 
         int index = 0;
+        boolean endOfFile = false;
 
         while (true) {
             String word = fileHandler.nextWord();
-            if (word.equals("")) {
-                break;
+            System.out.println("Word: " + word);
+            if (word.contains("ENDOFFILEREACHED")) {
+                endOfFile = true;
+                word = word.replace("ENDOFFILEREACHED", "");
             }
             char[] wordInArray = word.toCharArray();
             String wordToWrite = "";
@@ -48,7 +51,7 @@ public class Encryption {
                 Character charY = passphraseInArray[index];
                 charY = Character.toUpperCase(charY);
 
-                Character letter = tableau.tableau[characters.indexOf(charY)][characters.indexOf(charX)];
+                Character letter = tableau.getLetter(characters.indexOf(charY), characters.indexOf(charX));//.tableau[characters.indexOf(charY)][characters.indexOf(charX)];
                 wordToWrite += letter;
 
                 index++;
@@ -57,6 +60,9 @@ public class Encryption {
                 }
             }
             fileHandler.writeWord(wordToWrite + " ");
+            if (endOfFile) {
+                break;
+            }
         }
         fileHandler.close();
 

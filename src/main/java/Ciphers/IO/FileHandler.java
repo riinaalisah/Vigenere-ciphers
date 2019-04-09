@@ -34,10 +34,16 @@ public class FileHandler {
     public String nextWord() throws IOException {
         String word = "";
         while (true) {
-            char character = (char) reader.read();
-            if (character == ' ' || character == '\uFFFF') {
+            int characterAsInt = reader.read();
+            if (characterAsInt == -1) {
+                return word + "ENDOFFILEREACHED";
+            }
+
+            String character = Character.toString((char) characterAsInt);
+            if (character.equals(" ")) {
                 break;
             }
+
             word += character;
         }
         return word;

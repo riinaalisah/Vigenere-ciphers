@@ -26,11 +26,13 @@ public class Decryption {
         char[] passphraseInArray = passphrase.toCharArray();
 
         int index = 0;
+        boolean endOfFile = false;
 
         while (true) {
             String word = fileHandler.nextWord();
-            if (word.equals("")) {
-                break;
+            if (word.contains("ENDOFFILEREACHED")) {
+                endOfFile = true;
+                word = word.replace("ENDOFFILEREACHED", "");
             }
             char[] wordInArray = word.toCharArray();
             String wordToWrite = "";
@@ -68,6 +70,9 @@ public class Decryption {
 
             }
             fileHandler.writeWord(wordToWrite + " ");
+            if (endOfFile) {
+                break;
+            }
         }
         fileHandler.close();
         return fileHandler.getOutputFile();
