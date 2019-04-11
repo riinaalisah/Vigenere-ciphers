@@ -21,28 +21,30 @@ public class Encryption {
     public File encrypt(String passphrase, File textFile, Tableau tableau, ArrayList<Character> characters) throws IOException {
 
         FileHandler fileHandler = new FileHandler(textFile.getName(), true);
-        int passphraseLength = passphrase.length();
-        char[] passphraseInArray = passphrase.toCharArray();
-
+        char[] passphraseInArray = wordToArray(passphrase);
         int index = 0;
         boolean endOfFile = false;
+        String readWord;
+        String wordToWrite;
+
 
         while (true) {
-            String word = fileHandler.nextWord();
-            System.out.println("Word: " + word);
-            if (word.contains("ENDOFFILEREACHED")) {
+            readWord = fileHandler.nextWord();
+
+            // check if end of file is reached
+            if (readWord.contains("ENDOFFILEREACHED")) {
                 endOfFile = true;
-                word = word.replace("ENDOFFILEREACHED", "");
+                readWord = readWord.replace("ENDOFFILEREACHED", "");
             }
-            char[] wordInArray = word.toCharArray();
-            String wordToWrite = "";
+
+            char[] wordInArray = wordToArray(readWord);
+            wordToWrite = "";
 
             for (int i = 0; i < wordInArray.length; i++) {
-
                 Character charX = wordInArray[i];
                 charX = Character.toUpperCase(charX);
 
-
+                // check if character isn't included in alphabet (i.e. special character)
                 if (!characters.contains(charX)) {
                     wordToWrite += charX;
                     continue;
@@ -51,11 +53,11 @@ public class Encryption {
                 Character charY = passphraseInArray[index];
                 charY = Character.toUpperCase(charY);
 
-                Character letter = tableau.getLetter(characters.indexOf(charY), characters.indexOf(charX));//.tableau[characters.indexOf(charY)][characters.indexOf(charX)];
+                Character letter = tableau.getLetter(characters.indexOf(charY), characters.indexOf(charX));
                 wordToWrite += letter;
 
                 index++;
-                if (index == passphraseLength) {
+                if (index == passphrase.length()) {
                     index = 0;
                 }
             }
@@ -67,5 +69,14 @@ public class Encryption {
         fileHandler.close();
 
         return fileHandler.getOutputFile();
+    }
+
+
+    public char[] wordToArray(String word) {
+        char[] array = new char[word.length()];
+        for (int i = 0; i < word.length(); i++) {
+            array[i] = word.charAt(i);
+        }
+        return array;
     }
 }
