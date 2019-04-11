@@ -1,3 +1,5 @@
+package Algos;
+
 import Ciphers.Algos.NormalVigenere;
 import org.junit.Before;
 import org.junit.Test;

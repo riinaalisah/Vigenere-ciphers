@@ -1,3 +1,5 @@
+package Util;
+
 import Ciphers.Util.AlphabetArray;
 import org.junit.Before;
 import org.junit.Test;

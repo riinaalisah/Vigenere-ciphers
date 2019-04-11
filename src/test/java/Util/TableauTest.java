@@ -1,3 +1,5 @@
+package Util;
+
 import Ciphers.Util.Tableau;
 import org.junit.Test;
 
