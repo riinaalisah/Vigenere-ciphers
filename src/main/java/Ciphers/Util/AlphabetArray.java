@@ -14,6 +14,10 @@ public class AlphabetArray {
         }
     }
 
+    public void setCharacter(Character c, int index) {
+        this.alphabet[index] = c;
+    }
+
     public char[] getAlphabet() {
         return this.alphabet;
     }
@@ -38,6 +42,14 @@ public class AlphabetArray {
             }
         }
         return false;
+    }
+
+    public void removeCharacter(Character c) {
+        for (int i = 0; i < this.alphabet.length; i++) {
+            if (alphabet[i] == c) {
+                alphabet[i] = '-';
+            }
+        }
     }
 
 }

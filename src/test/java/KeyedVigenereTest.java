@@ -26,8 +26,8 @@ public class KeyedVigenereTest {
         String correct = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
         kv.reverseAlphabet();
         String alphInString = "";
-        for (int i = 0; i < kv.alphabet.length; i++) {
-            alphInString += kv.alphabet[i];
+        for (int i = 0; i < kv.alphabet.getAlphabet().length; i++) {
+            alphInString += kv.alphabet.getCharacter(i);
         }
         assertEquals(correct, alphInString);
     }
@@ -35,8 +35,9 @@ public class KeyedVigenereTest {
     @Test
     public void alphabetStringIsCorrectWithNoChoicesPicked() {
         kv.setChoicesAndKey("appletreecat", "n", "n", "n");
-        String correct = "APLETRCBDFGHIJKMNOQSUVWXYZ";
         kv.setAlphabet();
+        String correct = "APLETRCBDFGHIJKMNOQSUVWXYZ";
+
         String alphabet = checkAlphabetArray();
         assertEquals(correct, alphabet);
     }
@@ -99,12 +100,13 @@ public class KeyedVigenereTest {
     }
 
     private String checkAlphabetArray() {
-        String alphabet = "";
-        for (int i = 0; i < kv.alphabet.length; i++) {
-            alphabet += kv.alphabet[i];
+        String alphabetInString = "";
+        for (int i = 0; i < kv.alphabet.getAlphabet().length; i++) {
+            alphabetInString += kv.alphabet.getCharacter(i);
         }
-        return alphabet;
+        return alphabetInString;
     }
 
 
 }
+

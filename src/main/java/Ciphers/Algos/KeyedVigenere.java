@@ -1,5 +1,6 @@
 package Ciphers.Algos;
 
+import Ciphers.Util.AlphabetArray;
 import Ciphers.Util.Tableau;
 
 import java.util.ArrayList;
@@ -12,14 +13,8 @@ public class KeyedVigenere {
     String keyToRight;
 
     public Tableau tableau;
-    public char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-    public ArrayList<Character> characters;
-
-    public KeyedVigenere() {
-        characters = new ArrayList<>();
-
-
-    }
+    public char[] characters = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    public AlphabetArray alphabet = new AlphabetArray();
 
     public void setChoicesAndKey(String key, String keyInReverse, String alphInReverse, String keyToRight) {
         this.key = key;
@@ -29,15 +24,10 @@ public class KeyedVigenere {
     }
 
     public void setAlphabet() {
+        alphabet.setAlphabet(characters);
 
         if (this.alphInReverse.equals("y")) {
             reverseAlphabet();
-        }
-        /**
-         * adds alphabet to list
-         */
-        for (int i = 0; i < alphabet.length; i++) {
-            characters.add(alphabet[i]);
         }
 
         if (this.keyInReverse.equals("y")) {
@@ -52,7 +42,7 @@ public class KeyedVigenere {
             insertKeyToLeft();
         }
 
-        tableau = new Tableau(alphabet);
+        tableau = new Tableau(alphabet.getAlphabet());
     }
 
 
@@ -78,12 +68,12 @@ public class KeyedVigenere {
     public void reverseAlphabet() {
         char[] newAlphabet = new char[26];
         int index = 0;
-        for (int i = this.alphabet.length - 1; i >= 0; i--) {
-            newAlphabet[index] = this.alphabet[i];
+        for (int i = this.characters.length - 1; i >= 0; i--) {
+            newAlphabet[index] = this.characters[i];
             index++;
         }
 
-        this.alphabet = newAlphabet;
+        this.alphabet.setAlphabet(newAlphabet);
     }
 
     /**
@@ -104,15 +94,20 @@ public class KeyedVigenere {
     private void insertKeyToRight() {
 
         char[] keyParts = key.toCharArray();
-        removeKeyCharsFromAlphabetList(keyParts);
+        removeKeyCharsFromAlphabet(keyParts);
 
         /**
          * Fills alphabet array after removing characters in the keyword from list.
          * Starts from index 0 so the right side of array stays empty for characters in the key.
          */
         char[] newAlphabet = new char[26];
-        for (int i = 0; i < characters.size(); i++) {
-            newAlphabet[i] = characters.get(i);
+        int index = 0;
+
+        for (int i = 0; i < alphabet.getAlphabet().length; i++) {
+            if (alphabet.getCharacter(i) != '-') {
+                newAlphabet[index] = alphabet.getCharacter(i);
+                index++;
+            }
         }
 
         /**
@@ -121,11 +116,10 @@ public class KeyedVigenere {
         int startIndex = newAlphabet.length - keyParts.length;
         for (int i = 0; i < keyParts.length; i++) {
             newAlphabet[startIndex] = Character.toUpperCase(keyParts[i]);
-            characters.add(startIndex, Character.toUpperCase(keyParts[i]));
             startIndex++;
         }
 
-        alphabet = newAlphabet;
+        alphabet.setAlphabet(newAlphabet);
 
     }
 
@@ -134,7 +128,7 @@ public class KeyedVigenere {
      */
     private void insertKeyToLeft() {
         char[] keyParts = key.toCharArray();
-        removeKeyCharsFromAlphabetList(keyParts);
+        removeKeyCharsFromAlphabet(keyParts);
 
         /**
          * Fills alphabet array after removing characters in the keyword from list.
@@ -144,30 +138,34 @@ public class KeyedVigenere {
         int startIndex = keyParts.length;
         int index = 0;
         for (int i = startIndex; i < newAlphabet.length; i++) {
-            newAlphabet[i] = characters.get(index);
+            if (alphabet.getCharacter(index) != '-') {
+                newAlphabet[i] = alphabet.getCharacter(index);
+            } else {
+                i--;
+            }
             index++;
         }
-
         /**
-         * Inserts characters in thev keyword the to the beginning of the alphabet key.
+         * Inserts characters in the keyword the to the beginning of the alphabet key.
          */
         for (int i = 0; i < keyParts.length; i++) {
             newAlphabet[i] = Character.toUpperCase(keyParts[i]);
-            characters.add(i, Character.toUpperCase((keyParts[i])));
+            alphabet.setCharacter(Character.toUpperCase((keyParts[i])), i);
         }
-        alphabet = newAlphabet;
+
+        alphabet.setAlphabet(newAlphabet);
     }
 
     /**
      * Removes characters in the keyword from character list
      * @param keyParts Characters in keyword in an array
      */
-    private void removeKeyCharsFromAlphabetList(char[] keyParts) {
+    private void removeKeyCharsFromAlphabet(char[] keyParts) {
 
         for (int i = 0; i < keyParts.length; i++) {
             Character c = Character.toUpperCase(keyParts[i]);
-            if (characters.contains(c)) {
-                characters.remove(c);
+            if (alphabet.alphabetContainsCharacter(c)) {
+                alphabet.removeCharacter(c);
             }
         }
     }

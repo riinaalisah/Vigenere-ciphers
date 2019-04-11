@@ -1,6 +1,7 @@
 package Ciphers.Algos;
 
 import Ciphers.IO.FileHandler;
+import Ciphers.Util.AlphabetArray;
 import Ciphers.Util.Tableau;
 
 import java.io.File;
@@ -14,11 +15,10 @@ public class Encryption {
      * @param passphrase Used for row indexing
      * @param textFile File to encrypt
      * @param tableau Used to find correct letters for encrypted text
-     * @param characters List of available characters
      * @return
      * @throws IOException
      */
-    public File encrypt(String passphrase, File textFile, Tableau tableau, ArrayList<Character> characters) throws IOException {
+    public File encrypt(String passphrase, File textFile, Tableau tableau) throws IOException {
 
         FileHandler fileHandler = new FileHandler(textFile.getName(), true);
         char[] passphraseInArray = wordToArray(passphrase);
@@ -26,6 +26,8 @@ public class Encryption {
         boolean endOfFile = false;
         String readWord;
         String wordToWrite;
+        AlphabetArray alphabet = new AlphabetArray();
+        alphabet.setAlphabet(tableau.tableau[0]);
 
 
         while (true) {
@@ -45,7 +47,7 @@ public class Encryption {
                 charX = Character.toUpperCase(charX);
 
                 // check if character isn't included in alphabet (i.e. special character)
-                if (!characters.contains(charX)) {
+                if (!alphabet.alphabetContainsCharacter(charX)) {
                     wordToWrite += charX;
                     continue;
                 }
@@ -53,7 +55,7 @@ public class Encryption {
                 Character charY = passphraseInArray[index];
                 charY = Character.toUpperCase(charY);
 
-                Character letter = tableau.getLetter(characters.indexOf(charY), characters.indexOf(charX));
+                Character letter = tableau.getLetter(alphabet.getIndexOfCharacter(charY), alphabet.getIndexOfCharacter(charX));
                 wordToWrite += letter;
 
                 index++;

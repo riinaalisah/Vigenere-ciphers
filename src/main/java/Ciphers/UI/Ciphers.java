@@ -115,7 +115,7 @@ public class Ciphers {
         System.out.println("Enter passphrase:");
         String passphrase = reader.readLine();
 
-        File encrypted = encryption.encrypt(passphrase, file, nv.tableau, nv.characters);
+        File encrypted = encryption.encrypt(passphrase, file, nv.tableau);
         System.out.println("Encryption complete");
 
     }
@@ -141,11 +141,7 @@ public class Ciphers {
         kv.setChoicesAndKey(key, keyInReverse, alphInReverse, keyToEnd);
         kv.setAlphabet();
 
-        for (int i = 0; i < kv.characters.size(); i++) {
-            System.out.print(kv.characters.get(i));
-        }
-
-        encryption.encrypt(passphrase, file, kv.tableau, kv.characters);
+        encryption.encrypt(passphrase, file, kv.tableau);
         System.out.println("Encryption complete");
     }
 
@@ -221,7 +217,7 @@ public class Ciphers {
             }
 
             Tableau tableau = new Tableau(alphabet);
-            decryption.decrypt(passphrase, file, tableau, characters);
+            decryption.decrypt(passphrase, file, tableau);
         }
 
     }
@@ -259,7 +255,7 @@ public class Ciphers {
         String passphrase = reader.readLine();
         kv.setChoicesAndKey(key, keyInReverse, alphInReverse, keyToEnd);
         kv.setAlphabet();
-        decryption.decrypt(passphrase, file, kv.tableau, kv.characters);
+        decryption.decrypt(passphrase, file, kv.tableau);
 
     }
 
