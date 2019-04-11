@@ -2,6 +2,7 @@ import Ciphers.Util.Tableau;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class TableauTest {
     Tableau t;
@@ -84,5 +85,12 @@ public class TableauTest {
             tableau += "\n";
         }
         assertEquals(correct, tableau);
+    }
+
+    @Test
+    public void getLetterReturnsCorrectLetter() {
+        char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        Tableau tab = new Tableau(alphabet);
+        assertEquals((Character) 'B', tab.getLetter(23,4));
     }
 }

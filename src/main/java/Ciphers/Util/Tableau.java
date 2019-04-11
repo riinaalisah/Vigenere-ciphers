@@ -28,4 +28,8 @@ public class Tableau {
 
         return alphabet;
     }
+
+    public Character getLetter(int y, int x) {
+        return tableau[y][x];
+    }
 }
