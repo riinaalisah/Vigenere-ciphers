@@ -49,6 +49,7 @@ public class EncryptionTest {
 
     @After
     public void tearDown() {
-
+        File remove = new File("texts/textForEncryptTests.encrypted.txt");
+        remove.delete();
     }
 }

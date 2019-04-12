@@ -4,6 +4,7 @@ import Ciphers.Algos.Decryption;
 import Ciphers.Algos.KeyedVigenere;
 import Ciphers.Util.Tableau;
 import org.apache.commons.io.FileUtils;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,6 +45,14 @@ public class DecryptionTest {
         kv.setAlphabet();
         File decrypted = decryption.decrypt(passphrase, file, kv.tableau);
         assertTrue(FileUtils.contentEquals(correctFile, decrypted));
+    }
+
+    @After
+    public void tearDown() {
+        File remove1 = new File("texts/textForDecryptionTestNormal.decrypted.txt");
+        File remove2 = new File("texts/textForDecryptTestKeyedAllChoices.decrypted.txt");
+        remove1.delete();
+        remove2.delete();
     }
 
 
