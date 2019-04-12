@@ -54,32 +54,4 @@ public class NormalVigenereTest {
         assertEquals(correct, tableauInString);
     }
 
-
-    /*
-    @Test
-    public void simpleTextWithOnlyAlphabetIsCorrect() throws IOException {
-        File correct = new File("texts/cat_correct.txt");
-        FileWriter fw = new FileWriter("texts/cat_correct.txt");
-        fw.write("uphl tzw efxmbq rimx ");
-        fw.close();
-
-        File file = new File("texts/cat.txt");
-        File encrypted = vc.encrypt("spotti", file);
-        FileAssert.assertEquals(correct, encrypted);
-    }
-
-    @Test
-    public void simpleTextWithSomeSpecialCharactersIsCorrect() throws IOException {
-        File correct = new File("texts/uni_correct.txt");
-        FileWriter fw = new FileWriter("texts/uni_correct.txt");
-        fw.write("a hhnwg udainbwg gvbmfrs bg cfxjxkaaim hy pwagbgsa. x zbdm ai oempgjua lbmsmbgo ah dkxbln hhnoz. ");
-        fw.close();
-
-        File file = new File("texts/uni.txt");
-        File encrypted = vc.encrypt("spotti", file);
-        FileAssert.assertEquals(correct, encrypted);
-    }
-    */
-
-
 }
