@@ -40,7 +40,7 @@
                 <version>0.8.2</version>
                 <configuration>
                     <excludes>
-                        <exclude>Ciphers.UI</exclude>
+                        <exclude>**/Ciphers/UI/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
