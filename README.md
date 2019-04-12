@@ -26,3 +26,5 @@ The aim for this project is to create a program that can encrypt messages using 
 
 [Week 4](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/weekly_reports/week4.md)
 
+[Week 5](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/weekly_reports/week5.md)
+
