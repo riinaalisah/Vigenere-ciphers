@@ -39,7 +39,7 @@ public class EncryptionTest {
     @Test
     public void encryptionCorrectWithKeyedVigenereAllChoicesPicked() throws IOException {
         KeyedVigenere kv = new KeyedVigenere();
-        kv.setChoicesAndKey("keyphrase", "y", "y", "y");
+        kv.setChoicesAndKey("keyphrase", true, true, true);
         kv.setAlphabet();
         tableau = kv.tableau;
         File correct = new File("texts/encryptionTestCorrectKeyedAllChoices.txt");

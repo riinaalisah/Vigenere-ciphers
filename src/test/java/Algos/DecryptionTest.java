@@ -43,7 +43,7 @@ public class DecryptionTest {
     public void decryptionCorrectWithkeyedAllChoices() throws IOException {
         file = new File("textForDecryptTestKeyedAllChoices.txt");
         KeyedVigenere kv = new KeyedVigenere();
-        kv.setChoicesAndKey("keyphrase", "y", "y", "y");
+        kv.setChoicesAndKey("keyphrase", true, true, true);
         kv.setAlphabet();
         File decrypted = decryption.decrypt(passphrase, file, kv.tableau);
         assertTrue(FileUtils.contentEquals(correctFile, decrypted));

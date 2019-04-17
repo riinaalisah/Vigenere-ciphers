@@ -6,9 +6,9 @@ import ciphers.util.Tableau;
 public class KeyedVigenere {
 
     public String key;
-    String keyInReverse;
-    String alphInReverse;
-    String keyToRight;
+    boolean keyInReverse;
+    boolean alphInReverse;
+    boolean keyToRight;
 
     public Tableau tableau;
     public char[] characters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
@@ -17,7 +17,7 @@ public class KeyedVigenere {
     public AlphabetArray alphabet = new AlphabetArray(52);
     public AlphabetArray originalAlphabet = new AlphabetArray(52);
 
-    public void setChoicesAndKey(String key, String keyInReverse, String alphInReverse, String keyToRight) {
+    public void setChoicesAndKey(String key, boolean keyInReverse, boolean alphInReverse, boolean keyToRight) {
         originalAlphabet.setAlphabet(characters);
         alphabet.setAlphabet(characters);
 
@@ -36,17 +36,17 @@ public class KeyedVigenere {
     public void setAlphabet() {
         //alphabet.setAlphabet(characters);
 
-        if (this.alphInReverse.equals("y")) {
+        if (this.alphInReverse) {
             reverseAlphabet();
         }
 
-        if (this.keyInReverse.equals("y")) {
+        if (this.keyInReverse) {
             reverseKey();
         }
 
         removeDuplicateAlphabetsFromKey();
 
-        if (this.keyToRight.equals("y")) {
+        if (this.keyToRight) {
             insertKeyToRight();
         } else {
             insertKeyToLeft();

@@ -16,7 +16,7 @@ public class KeyedVigenereTest {
 
     @Test
     public void duplicateAlphabetAreRemovedFromKey() {
-        kv.setChoicesAndKey("alfohmelldftssa", "n", "n", "n");
+        kv.setChoicesAndKey("alfohmelldftssa", false, false, false);
         String correct = "ALFOHMEDTS";
         kv.removeDuplicateAlphabetsFromKey();
         assertEquals(correct, kv.key);
@@ -36,7 +36,7 @@ public class KeyedVigenereTest {
 
     @Test
     public void alphabetStringIsCorrectWithNoChoicesPicked() {
-        kv.setChoicesAndKey("appletreecat", "n", "n", "n");
+        kv.setChoicesAndKey("appletreecat", false, false, false);
         kv.setAlphabet();
         String correct = "APLETRCBDFGHIJKMNOQSUVWXYZapletrcbdfghijkmnoqsuvwxyz";
 
@@ -47,7 +47,7 @@ public class KeyedVigenereTest {
 
     @Test
     public void keyIsReversedCorrectly() {
-        kv.setChoicesAndKey("appletreecat", "y", "n", "n");
+        kv.setChoicesAndKey("appletreecat", true, false, false);
         kv.setAlphabet();
         String correct = "TACERLP";
         assertEquals(correct, kv.key);
@@ -55,7 +55,7 @@ public class KeyedVigenereTest {
 
     @Test
     public void keyIsInsertedToTheRightSideOfAlphabet() {
-        kv.setChoicesAndKey("appletreecat", "n", "n", "y");
+        kv.setChoicesAndKey("appletreecat", false, false, true);
         kv.setAlphabet();
         String correct = "BDFGHIJKMNOQSUVWXYZAPLETRCbdfghijkmnoqsuvwxyzapletrc";
         String alphabet = checkAlphabetArray();
@@ -64,7 +64,7 @@ public class KeyedVigenereTest {
 
     @Test
     public void reversedKeyAndReversedAlphabetCorrect() {
-        kv.setChoicesAndKey("appletreecat", "y", "y", "n");
+        kv.setChoicesAndKey("appletreecat", true, true, false);
         kv.setAlphabet();
 
         String correct = "TACERLPZYXWVUSQONMKJIHGFDBtacerlpzyxwvusqonmkjihgfdb";
@@ -74,7 +74,7 @@ public class KeyedVigenereTest {
 
     @Test
     public void reversedAlphabetAndKeyToRightAlphabetCorrect() {
-        kv.setChoicesAndKey("appletreecat", "n", "y", "y");
+        kv.setChoicesAndKey("appletreecat", false, true, true);
         kv.setAlphabet();
         String correct = "ZYXWVUSQONMKJIHGFDBAPLETRCzyxwvusqonmkjihgfdbapletrc";
         String alphabet = checkAlphabetArray();
@@ -83,7 +83,7 @@ public class KeyedVigenereTest {
 
     @Test
     public void reversedKeyAndkeyToRightAlphabetCorrect() {
-        kv.setChoicesAndKey("appletreecat", "y", "n", "y");
+        kv.setChoicesAndKey("appletreecat", true, false, true);
         kv.setAlphabet();
         String correct = "BDFGHIJKMNOQSUVWXYZTACERLPbdfghijkmnoqsuvwxyztacerlp";
         String alphabet = checkAlphabetArray();
@@ -92,7 +92,7 @@ public class KeyedVigenereTest {
 
     @Test
     public void alphabetCorrectAllChoicesPicked() {
-        kv.setChoicesAndKey("appletreecat", "y", "y", "y");
+        kv.setChoicesAndKey("appletreecat", true, true, true);
         kv.setAlphabet();
         String correct = "ZYXWVUSQONMKJIHGFDBTACERLPzyxwvusqonmkjihgfdbtacerlp";
         String alphabet = checkAlphabetArray();
