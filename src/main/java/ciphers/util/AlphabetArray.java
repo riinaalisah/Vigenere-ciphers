@@ -1,11 +1,11 @@
-package Ciphers.Util;
+package ciphers.util;
 
 public class AlphabetArray {
 
     private char[] alphabet;
 
-    public AlphabetArray() {
-        this.alphabet = new char[26];
+    public AlphabetArray(int length) {
+        this.alphabet = new char[length];
     }
 
     public void setAlphabet(char[] characters) {
@@ -14,7 +14,7 @@ public class AlphabetArray {
         }
     }
 
-    public void setCharacter(Character c, int index) {
+    public void setCharacter(char c, int index) {
         this.alphabet[index] = c;
     }
 
@@ -22,11 +22,11 @@ public class AlphabetArray {
         return this.alphabet;
     }
 
-    public Character getCharacter(int index) {
+    public char getCharacter(int index) {
         return alphabet[index];
     }
 
-    public int getIndexOfCharacter(Character c) {
+    public int getIndexOfCharacter(char c) {
         for (int i = 0; i < this.alphabet.length; i++) {
             if (this.alphabet[i] == c) {
                 return i;
@@ -35,7 +35,7 @@ public class AlphabetArray {
         return -1;
     }
 
-    public boolean alphabetContainsCharacter(Character c) {
+    public boolean containsCharacter(char c) {
         for (int i = 0; i < this.alphabet.length; i++) {
             if (this.alphabet[i] == c) {
                 return true;
@@ -44,11 +44,29 @@ public class AlphabetArray {
         return false;
     }
 
-    public void removeCharacter(Character c) {
+    public void removeCharacter(char c) {
         for (int i = 0; i < this.alphabet.length; i++) {
             if (alphabet[i] == c) {
                 alphabet[i] = '-';
             }
+        }
+    }
+
+    public char charToUpperCase(char c) {
+        int indexOfFound = getIndexOfCharacter(c);
+        if (indexOfFound > 25) {
+            return alphabet[indexOfFound - 26];
+        } else {
+            return alphabet[indexOfFound];
+        }
+    }
+
+    public char charToLowerCase(char c) {
+        int indexOfFound = getIndexOfCharacter(c);
+        if (indexOfFound <= 25) {
+            return alphabet[indexOfFound + 26];
+        } else {
+            return alphabet[indexOfFound];
         }
     }
 

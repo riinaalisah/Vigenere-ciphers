@@ -1,7 +1,7 @@
 # Testing Document
 
 ## Unit Testing
-All classes except for UI class *Ciphers* are tested using JUnit. 
+All classes except for UI class *ciphers* are tested using JUnit. 
 
 #### Code Coverage
 

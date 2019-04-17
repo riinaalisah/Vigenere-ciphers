@@ -1,6 +1,6 @@
 package IO;
 
-import Ciphers.IO.FileHandler;
+import ciphers.io.FileHandler;
 import org.junit.After;
 import org.junit.Test;
 

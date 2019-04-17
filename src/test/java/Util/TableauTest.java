@@ -1,48 +1,48 @@
 package Util;
 
-import Ciphers.Util.Tableau;
+import ciphers.util.Tableau;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 public class TableauTest {
     Tableau t;
 
     @Test
     public void normalTableauIsCorrect() {
-        String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n" +
-                        "BCDEFGHIJKLMNOPQRSTUVWXYZA\n" +
-                        "CDEFGHIJKLMNOPQRSTUVWXYZAB\n" +
-                        "DEFGHIJKLMNOPQRSTUVWXYZABC\n" +
-                        "EFGHIJKLMNOPQRSTUVWXYZABCD\n" +
-                        "FGHIJKLMNOPQRSTUVWXYZABCDE\n" +
-                        "GHIJKLMNOPQRSTUVWXYZABCDEF\n" +
-                        "HIJKLMNOPQRSTUVWXYZABCDEFG\n" +
-                        "IJKLMNOPQRSTUVWXYZABCDEFGH\n" +
-                        "JKLMNOPQRSTUVWXYZABCDEFGHI\n" +
-                        "KLMNOPQRSTUVWXYZABCDEFGHIJ\n" +
-                        "LMNOPQRSTUVWXYZABCDEFGHIJK\n" +
-                        "MNOPQRSTUVWXYZABCDEFGHIJKL\n" +
-                        "NOPQRSTUVWXYZABCDEFGHIJKLM\n" +
-                        "OPQRSTUVWXYZABCDEFGHIJKLMN\n" +
-                        "PQRSTUVWXYZABCDEFGHIJKLMNO\n" +
-                        "QRSTUVWXYZABCDEFGHIJKLMNOP\n" +
-                        "RSTUVWXYZABCDEFGHIJKLMNOPQ\n" +
-                        "STUVWXYZABCDEFGHIJKLMNOPQR\n" +
-                        "TUVWXYZABCDEFGHIJKLMNOPQRS\n" +
-                        "UVWXYZABCDEFGHIJKLMNOPQRST\n" +
-                        "VWXYZABCDEFGHIJKLMNOPQRSTU\n" +
-                        "WXYZABCDEFGHIJKLMNOPQRSTUV\n" +
-                        "XYZABCDEFGHIJKLMNOPQRSTUVW\n" +
-                        "YZABCDEFGHIJKLMNOPQRSTUVWX\n" +
-                        "ZABCDEFGHIJKLMNOPQRSTUVWXY\n";
-        char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\n" +
+                        "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza\n" +
+                        "CDEFGHIJKLMNOPQRSTUVWXYZABcdefghijklmnopqrstuvwxyzab\n" +
+                        "DEFGHIJKLMNOPQRSTUVWXYZABCdefghijklmnopqrstuvwxyzabc\n" +
+                        "EFGHIJKLMNOPQRSTUVWXYZABCDefghijklmnopqrstuvwxyzabcd\n" +
+                        "FGHIJKLMNOPQRSTUVWXYZABCDEfghijklmnopqrstuvwxyzabcde\n" +
+                        "GHIJKLMNOPQRSTUVWXYZABCDEFghijklmnopqrstuvwxyzabcdef\n" +
+                        "HIJKLMNOPQRSTUVWXYZABCDEFGhijklmnopqrstuvwxyzabcdefg\n" +
+                        "IJKLMNOPQRSTUVWXYZABCDEFGHijklmnopqrstuvwxyzabcdefgh\n" +
+                        "JKLMNOPQRSTUVWXYZABCDEFGHIjklmnopqrstuvwxyzabcdefghi\n" +
+                        "KLMNOPQRSTUVWXYZABCDEFGHIJklmnopqrstuvwxyzabcdefghij\n" +
+                        "LMNOPQRSTUVWXYZABCDEFGHIJKlmnopqrstuvwxyzabcdefghijk\n" +
+                        "MNOPQRSTUVWXYZABCDEFGHIJKLmnopqrstuvwxyzabcdefghijkl\n" +
+                        "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm\n" +
+                        "OPQRSTUVWXYZABCDEFGHIJKLMNopqrstuvwxyzabcdefghijklmn\n" +
+                        "PQRSTUVWXYZABCDEFGHIJKLMNOpqrstuvwxyzabcdefghijklmno\n" +
+                        "QRSTUVWXYZABCDEFGHIJKLMNOPqrstuvwxyzabcdefghijklmnop\n" +
+                        "RSTUVWXYZABCDEFGHIJKLMNOPQrstuvwxyzabcdefghijklmnopq\n" +
+                        "STUVWXYZABCDEFGHIJKLMNOPQRstuvwxyzabcdefghijklmnopqr\n" +
+                        "TUVWXYZABCDEFGHIJKLMNOPQRStuvwxyzabcdefghijklmnopqrs\n" +
+                        "UVWXYZABCDEFGHIJKLMNOPQRSTuvwxyzabcdefghijklmnopqrst\n" +
+                        "VWXYZABCDEFGHIJKLMNOPQRSTUvwxyzabcdefghijklmnopqrstu\n" +
+                        "WXYZABCDEFGHIJKLMNOPQRSTUVwxyzabcdefghijklmnopqrstuv\n" +
+                        "XYZABCDEFGHIJKLMNOPQRSTUVWxyzabcdefghijklmnopqrstuvw\n" +
+                        "YZABCDEFGHIJKLMNOPQRSTUVWXyzabcdefghijklmnopqrstuvwx\n" +
+                        "ZABCDEFGHIJKLMNOPQRSTUVWXYzabcdefghijklmnopqrstuvwxy\n";
+        char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+                           'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
         Tableau tab = new Tableau(alphabet);
         String tableauInString = "";
         for (int y = 0; y < tab.tableau.length; y++) {
             for (int x = 0; x < tab.tableau[y].length; x++) {
-                tableauInString += tab.tableau[y][x];
+                tableauInString += tab.getLetter(y, x);
             }
             tableauInString += "\n";
         }
@@ -51,48 +51,43 @@ public class TableauTest {
 
     @Test
     public void tableauWithKeywordIsCorrect() {
-        String correct = "APLETRBCDFGHIJKMNOQSUVWXYZ\n" +
-                        "PLETRBCDFGHIJKMNOQSUVWXYZA\n" +
-                        "LETRBCDFGHIJKMNOQSUVWXYZAP\n" +
-                        "ETRBCDFGHIJKMNOQSUVWXYZAPL\n" +
-                        "TRBCDFGHIJKMNOQSUVWXYZAPLE\n" +
-                        "RBCDFGHIJKMNOQSUVWXYZAPLET\n" +
-                        "BCDFGHIJKMNOQSUVWXYZAPLETR\n" +
-                        "CDFGHIJKMNOQSUVWXYZAPLETRB\n" +
-                        "DFGHIJKMNOQSUVWXYZAPLETRBC\n" +
-                        "FGHIJKMNOQSUVWXYZAPLETRBCD\n" +
-                        "GHIJKMNOQSUVWXYZAPLETRBCDF\n" +
-                        "HIJKMNOQSUVWXYZAPLETRBCDFG\n" +
-                        "IJKMNOQSUVWXYZAPLETRBCDFGH\n" +
-                        "JKMNOQSUVWXYZAPLETRBCDFGHI\n" +
-                        "KMNOQSUVWXYZAPLETRBCDFGHIJ\n" +
-                        "MNOQSUVWXYZAPLETRBCDFGHIJK\n" +
-                        "NOQSUVWXYZAPLETRBCDFGHIJKM\n" +
-                        "OQSUVWXYZAPLETRBCDFGHIJKMN\n" +
-                        "QSUVWXYZAPLETRBCDFGHIJKMNO\n" +
-                        "SUVWXYZAPLETRBCDFGHIJKMNOQ\n" +
-                        "UVWXYZAPLETRBCDFGHIJKMNOQS\n" +
-                        "VWXYZAPLETRBCDFGHIJKMNOQSU\n" +
-                        "WXYZAPLETRBCDFGHIJKMNOQSUV\n" +
-                        "XYZAPLETRBCDFGHIJKMNOQSUVW\n" +
-                        "YZAPLETRBCDFGHIJKMNOQSUVWX\n" +
-                        "ZAPLETRBCDFGHIJKMNOQSUVWXY\n";
-        char[] alphabet = {'A','P','L','E','T','R','B','C','D','F','G','H','I','J','K','M','N','O','Q','S','U','V','W','X','Y','Z'};
+        String correct = "APLETRBCDFGHIJKMNOQSUVWXYZapletrbcdfghijkmnoqsuvwxyz\n" +
+                        "PLETRBCDFGHIJKMNOQSUVWXYZApletrbcdfghijkmnoqsuvwxyza\n" +
+                        "LETRBCDFGHIJKMNOQSUVWXYZAPletrbcdfghijkmnoqsuvwxyzap\n" +
+                        "ETRBCDFGHIJKMNOQSUVWXYZAPLetrbcdfghijkmnoqsuvwxyzapl\n" +
+                        "TRBCDFGHIJKMNOQSUVWXYZAPLEtrbcdfghijkmnoqsuvwxyzaple\n" +
+                        "RBCDFGHIJKMNOQSUVWXYZAPLETrbcdfghijkmnoqsuvwxyzaplet\n" +
+                        "BCDFGHIJKMNOQSUVWXYZAPLETRbcdfghijkmnoqsuvwxyzapletr\n" +
+                        "CDFGHIJKMNOQSUVWXYZAPLETRBcdfghijkmnoqsuvwxyzapletrb\n" +
+                        "DFGHIJKMNOQSUVWXYZAPLETRBCdfghijkmnoqsuvwxyzapletrbc\n" +
+                        "FGHIJKMNOQSUVWXYZAPLETRBCDfghijkmnoqsuvwxyzapletrbcd\n" +
+                        "GHIJKMNOQSUVWXYZAPLETRBCDFghijkmnoqsuvwxyzapletrbcdf\n" +
+                        "HIJKMNOQSUVWXYZAPLETRBCDFGhijkmnoqsuvwxyzapletrbcdfg\n" +
+                        "IJKMNOQSUVWXYZAPLETRBCDFGHijkmnoqsuvwxyzapletrbcdfgh\n" +
+                        "JKMNOQSUVWXYZAPLETRBCDFGHIjkmnoqsuvwxyzapletrbcdfghi\n" +
+                        "KMNOQSUVWXYZAPLETRBCDFGHIJkmnoqsuvwxyzapletrbcdfghij\n" +
+                        "MNOQSUVWXYZAPLETRBCDFGHIJKmnoqsuvwxyzapletrbcdfghijk\n" +
+                        "NOQSUVWXYZAPLETRBCDFGHIJKMnoqsuvwxyzapletrbcdfghijkm\n" +
+                        "OQSUVWXYZAPLETRBCDFGHIJKMNoqsuvwxyzapletrbcdfghijkmn\n" +
+                        "QSUVWXYZAPLETRBCDFGHIJKMNOqsuvwxyzapletrbcdfghijkmno\n" +
+                        "SUVWXYZAPLETRBCDFGHIJKMNOQsuvwxyzapletrbcdfghijkmnoq\n" +
+                        "UVWXYZAPLETRBCDFGHIJKMNOQSuvwxyzapletrbcdfghijkmnoqs\n" +
+                        "VWXYZAPLETRBCDFGHIJKMNOQSUvwxyzapletrbcdfghijkmnoqsu\n" +
+                        "WXYZAPLETRBCDFGHIJKMNOQSUVwxyzapletrbcdfghijkmnoqsuv\n" +
+                        "XYZAPLETRBCDFGHIJKMNOQSUVWxyzapletrbcdfghijkmnoqsuvw\n" +
+                        "YZAPLETRBCDFGHIJKMNOQSUVWXyzapletrbcdfghijkmnoqsuvwx\n" +
+                        "ZAPLETRBCDFGHIJKMNOQSUVWXYzapletrbcdfghijkmnoqsuvwxy\n";
+        char[] alphabet = {'A','P','L','E','T','R','B','C','D','F','G','H','I','J','K','M','N','O','Q','S','U','V','W','X','Y','Z',
+                           'a','p','l','e','t','r','b','c','d','f','g','h','i','j','k','m','n','o','q','s','u','v','w','x','y','z'};
         Tableau tab = new Tableau(alphabet);
         String tableau = "";
         for (int y = 0; y < tab.tableau.length; y++) {
             for (int x = 0; x < tab.tableau[y].length; x++) {
-                tableau += tab.tableau[y][x];
+                tableau += tab.getLetter(y, x);
             }
             tableau += "\n";
         }
         assertEquals(correct, tableau);
     }
 
-    @Test
-    public void getLetterReturnsCorrectLetter() {
-        char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-        Tableau tab = new Tableau(alphabet);
-        assertEquals((Character) 'B', tab.getLetter(23,4));
-    }
 }

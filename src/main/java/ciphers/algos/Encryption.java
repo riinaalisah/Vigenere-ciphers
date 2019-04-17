@@ -1,8 +1,8 @@
-package Ciphers.Algos;
+package ciphers.algos;
 
-import Ciphers.IO.FileHandler;
-import Ciphers.Util.AlphabetArray;
-import Ciphers.Util.Tableau;
+import ciphers.io.FileHandler;
+import ciphers.util.AlphabetArray;
+import ciphers.util.Tableau;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,9 +25,13 @@ public class Encryption {
         boolean endOfFile = false;
         String readWord;
         String wordToWrite;
-        AlphabetArray alphabet = new AlphabetArray();
+        AlphabetArray alphabet = new AlphabetArray(52);
         alphabet.setAlphabet(tableau.tableau[0]);
 
+
+        for (int i = 0; i < passphraseInArray.length; i++) {
+            passphraseInArray[i] = alphabet.charToUpperCase(passphraseInArray[i]);
+        }
 
         while (true) {
             readWord = fileHandler.nextWord();
@@ -42,19 +46,17 @@ public class Encryption {
             wordToWrite = "";
 
             for (int i = 0; i < wordInArray.length; i++) {
-                Character charX = wordInArray[i];
-                charX = Character.toUpperCase(charX);
+                char charX = wordInArray[i];
 
                 // check if character isn't included in alphabet (i.e. special character)
-                if (!alphabet.alphabetContainsCharacter(charX)) {
+                if (!alphabet.containsCharacter(charX)) {
                     wordToWrite += charX;
                     continue;
                 }
 
-                Character charY = passphraseInArray[index];
-                charY = Character.toUpperCase(charY);
+                char charY = passphraseInArray[index];
 
-                Character letter = tableau.getLetter(alphabet.getIndexOfCharacter(charY), alphabet.getIndexOfCharacter(charX));
+                char letter = tableau.getLetter(alphabet.getIndexOfCharacter(charY), alphabet.getIndexOfCharacter(charX));
                 wordToWrite += letter;
 
                 index++;

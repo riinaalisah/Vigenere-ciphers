@@ -1,6 +1,6 @@
 package Util;
 
-import Ciphers.Util.AlphabetArray;
+import ciphers.util.AlphabetArray;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class AlphabetArrayTest {
 
     @Before
     public void setUp() {
-        this.alphabet = new AlphabetArray();
+        this.alphabet = new AlphabetArray(52);
     }
 
     @Test
@@ -43,19 +43,19 @@ public class AlphabetArrayTest {
     @Test
     public void methodGetCharacterReturnsCorrectCharacter() {
         alphabet.setAlphabet(characters);
-        assertEquals((Character) 'J', alphabet.getCharacter(9));
+        assertEquals('J', alphabet.getCharacter(9));
     }
 
     @Test
     public void returnsTrueIfCharacterIsFound() {
         alphabet.setAlphabet(characters);
-        assertTrue(alphabet.alphabetContainsCharacter('H'));
+        assertTrue(alphabet.containsCharacter('H'));
     }
 
     @Test
     public void returnsFalseIfCharacterIsNotFound() {
         alphabet.setAlphabet(characters);
-        assertFalse(alphabet.alphabetContainsCharacter('*'));
+        assertFalse(alphabet.containsCharacter('*'));
     }
 
 }

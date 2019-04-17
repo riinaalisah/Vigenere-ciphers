@@ -1,8 +1,8 @@
 package Algos;
 
-import Ciphers.Algos.Decryption;
-import Ciphers.Algos.KeyedVigenere;
-import Ciphers.Util.Tableau;
+import ciphers.algos.Decryption;
+import ciphers.algos.KeyedVigenere;
+import ciphers.util.Tableau;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;

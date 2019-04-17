@@ -1,10 +1,10 @@
-package Ciphers.UI;
+package ciphers.ui;
 
-import Ciphers.Util.Tableau;
-import Ciphers.Algos.Decryption;
-import Ciphers.Algos.Encryption;
-import Ciphers.Algos.KeyedVigenere;
-import Ciphers.Algos.NormalVigenere;
+import ciphers.util.Tableau;
+import ciphers.algos.Decryption;
+import ciphers.algos.Encryption;
+import ciphers.algos.KeyedVigenere;
+import ciphers.algos.NormalVigenere;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -209,8 +209,8 @@ public class Ciphers {
             System.out.println("Enter the passphrase used for encryption: ");
             String passphrase = reader.readLine();
 
-            char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-            ArrayList<Character> characters ;
+            char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+            ArrayList<Character> characters;
             characters = new ArrayList<Character>();
             for (int i = 0; i < alphabet.length; i++) {
                 characters.add(alphabet[i]);

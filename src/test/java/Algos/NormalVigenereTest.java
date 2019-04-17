@@ -1,6 +1,6 @@
 package Algos;
 
-import Ciphers.Algos.NormalVigenere;
+import ciphers.algos.NormalVigenere;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,32 +18,32 @@ public class NormalVigenereTest {
 
     @Test
     public void tableauIsCorrect() {
-        String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n" +
-                        "BCDEFGHIJKLMNOPQRSTUVWXYZA\n" +
-                        "CDEFGHIJKLMNOPQRSTUVWXYZAB\n" +
-                        "DEFGHIJKLMNOPQRSTUVWXYZABC\n" +
-                        "EFGHIJKLMNOPQRSTUVWXYZABCD\n" +
-                        "FGHIJKLMNOPQRSTUVWXYZABCDE\n" +
-                        "GHIJKLMNOPQRSTUVWXYZABCDEF\n" +
-                        "HIJKLMNOPQRSTUVWXYZABCDEFG\n" +
-                        "IJKLMNOPQRSTUVWXYZABCDEFGH\n" +
-                        "JKLMNOPQRSTUVWXYZABCDEFGHI\n" +
-                        "KLMNOPQRSTUVWXYZABCDEFGHIJ\n" +
-                        "LMNOPQRSTUVWXYZABCDEFGHIJK\n" +
-                        "MNOPQRSTUVWXYZABCDEFGHIJKL\n" +
-                        "NOPQRSTUVWXYZABCDEFGHIJKLM\n" +
-                        "OPQRSTUVWXYZABCDEFGHIJKLMN\n" +
-                        "PQRSTUVWXYZABCDEFGHIJKLMNO\n" +
-                        "QRSTUVWXYZABCDEFGHIJKLMNOP\n" +
-                        "RSTUVWXYZABCDEFGHIJKLMNOPQ\n" +
-                        "STUVWXYZABCDEFGHIJKLMNOPQR\n" +
-                        "TUVWXYZABCDEFGHIJKLMNOPQRS\n" +
-                        "UVWXYZABCDEFGHIJKLMNOPQRST\n" +
-                        "VWXYZABCDEFGHIJKLMNOPQRSTU\n" +
-                        "WXYZABCDEFGHIJKLMNOPQRSTUV\n" +
-                        "XYZABCDEFGHIJKLMNOPQRSTUVW\n" +
-                        "YZABCDEFGHIJKLMNOPQRSTUVWX\n" +
-                        "ZABCDEFGHIJKLMNOPQRSTUVWXY\n";
+        String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\n" +
+                        "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza\n" +
+                        "CDEFGHIJKLMNOPQRSTUVWXYZABcdefghijklmnopqrstuvwxyzab\n" +
+                        "DEFGHIJKLMNOPQRSTUVWXYZABCdefghijklmnopqrstuvwxyzabc\n" +
+                        "EFGHIJKLMNOPQRSTUVWXYZABCDefghijklmnopqrstuvwxyzabcd\n" +
+                        "FGHIJKLMNOPQRSTUVWXYZABCDEfghijklmnopqrstuvwxyzabcde\n" +
+                        "GHIJKLMNOPQRSTUVWXYZABCDEFghijklmnopqrstuvwxyzabcdef\n" +
+                        "HIJKLMNOPQRSTUVWXYZABCDEFGhijklmnopqrstuvwxyzabcdefg\n" +
+                        "IJKLMNOPQRSTUVWXYZABCDEFGHijklmnopqrstuvwxyzabcdefgh\n" +
+                        "JKLMNOPQRSTUVWXYZABCDEFGHIjklmnopqrstuvwxyzabcdefghi\n" +
+                        "KLMNOPQRSTUVWXYZABCDEFGHIJklmnopqrstuvwxyzabcdefghij\n" +
+                        "LMNOPQRSTUVWXYZABCDEFGHIJKlmnopqrstuvwxyzabcdefghijk\n" +
+                        "MNOPQRSTUVWXYZABCDEFGHIJKLmnopqrstuvwxyzabcdefghijkl\n" +
+                        "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm\n" +
+                        "OPQRSTUVWXYZABCDEFGHIJKLMNopqrstuvwxyzabcdefghijklmn\n" +
+                        "PQRSTUVWXYZABCDEFGHIJKLMNOpqrstuvwxyzabcdefghijklmno\n" +
+                        "QRSTUVWXYZABCDEFGHIJKLMNOPqrstuvwxyzabcdefghijklmnop\n" +
+                        "RSTUVWXYZABCDEFGHIJKLMNOPQrstuvwxyzabcdefghijklmnopq\n" +
+                        "STUVWXYZABCDEFGHIJKLMNOPQRstuvwxyzabcdefghijklmnopqr\n" +
+                        "TUVWXYZABCDEFGHIJKLMNOPQRStuvwxyzabcdefghijklmnopqrs\n" +
+                        "UVWXYZABCDEFGHIJKLMNOPQRSTuvwxyzabcdefghijklmnopqrst\n" +
+                        "VWXYZABCDEFGHIJKLMNOPQRSTUvwxyzabcdefghijklmnopqrstu\n" +
+                        "WXYZABCDEFGHIJKLMNOPQRSTUVwxyzabcdefghijklmnopqrstuv\n" +
+                        "XYZABCDEFGHIJKLMNOPQRSTUVWxyzabcdefghijklmnopqrstuvw\n" +
+                        "YZABCDEFGHIJKLMNOPQRSTUVWXyzabcdefghijklmnopqrstuvwx\n" +
+                        "ZABCDEFGHIJKLMNOPQRSTUVWXYzabcdefghijklmnopqrstuvwxy\n";
         String tableauInString = "";
         for (int y = 0; y < vc.tableau.tableau.length; y++) {
             for (int x = 0; x < vc.tableau.tableau[y].length; x++) {

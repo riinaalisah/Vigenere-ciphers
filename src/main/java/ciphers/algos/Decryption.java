@@ -1,8 +1,8 @@
-package Ciphers.Algos;
+package ciphers.algos;
 
-import Ciphers.Util.AlphabetArray;
-import Ciphers.Util.Tableau;
-import Ciphers.IO.FileHandler;
+import ciphers.util.AlphabetArray;
+import ciphers.util.Tableau;
+import ciphers.io.FileHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,8 +23,12 @@ public class Decryption {
         FileHandler fileHandler = new FileHandler(textFile.getName(), false);
         int passphraseLength = passphrase.length();
         char[] passphraseInArray = passphrase.toCharArray();
-        AlphabetArray alphabet = new AlphabetArray();
+        AlphabetArray alphabet = new AlphabetArray(52);
         alphabet.setAlphabet(tableau.tableau[0]);
+
+        for (int i = 0; i < passphraseInArray.length; i++) {
+            passphraseInArray[i] = alphabet.charToUpperCase(passphraseInArray[i]);
+        }
 
         int index = 0;
         boolean endOfFile = false;
@@ -35,28 +39,26 @@ public class Decryption {
                 endOfFile = true;
                 word = word.replace("ENDOFFILEREACHED", "");
             }
+
             char[] wordInArray = word.toCharArray();
             String wordToWrite = "";
 
             for (int i = 0; i < wordInArray.length; i++) {
 
-                Character charX = wordInArray[i];
-                charX = Character.toUpperCase(charX);
+                char charX = wordInArray[i];
 
-                if (!alphabet.alphabetContainsCharacter(charX)) {
+                if (!alphabet.containsCharacter(charX)) {
                     wordToWrite += charX;
                     continue;
                 }
 
-                Character charY = passphraseInArray[index];
-                charY = Character.toUpperCase(charY);
+                char charY = passphraseInArray[index];
 
                 char[] charsAtCharYRow = tableau.tableau[alphabet.getIndexOfCharacter(charY)];
 
 
-                Character letter = null;
+                char letter = '\u0000';
                 for (int n = 0; n < charsAtCharYRow.length; n++) {
-                    //System.out.print(charsAtCharYRow[n]);
                     if (charsAtCharYRow[n] == charX) {
                         letter = alphabet.getCharacter(n);
                         break;

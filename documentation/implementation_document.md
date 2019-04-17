@@ -36,7 +36,7 @@ Tableau is the key element of the ciphers. Tableau is a two-dimensional array an
 alphabet key to every row. After every row the alphabet switch places to left, so the first alphabet is the last alphabet
  on the next row.
 
-#### User Interface (class *Ciphers*)
+#### User Interface (class *ciphers*)
 
 UI is a simple text based interface with a few steps:
 1. User chooses the file to encrypt/decrypt
