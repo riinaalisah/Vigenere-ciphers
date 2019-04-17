@@ -72,7 +72,12 @@ public class Decryption {
                 }
 
             }
-            fileHandler.writeWord(wordToWrite + " ");
+            if (!endOfFile) {
+                fileHandler.writeWord(wordToWrite + " ");
+            } else {
+                fileHandler.writeWord(wordToWrite);
+            }
+
             if (endOfFile) {
                 break;
             }

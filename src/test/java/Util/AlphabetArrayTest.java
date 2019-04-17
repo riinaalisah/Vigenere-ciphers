@@ -10,19 +10,21 @@ import static junitx.framework.Assert.assertFalse;
 
 public class AlphabetArrayTest {
     AlphabetArray alphabet;
-    char[] characters = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    char[] characters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+                        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
     @Before
     public void setUp() {
         this.alphabet = new AlphabetArray(52);
+        alphabet.setAlphabet(characters);
     }
 
     @Test
     public void alphabetCanBeSet() {
-        alphabet.setAlphabet(characters);
-        String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         String alphabetInString = "";
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < 52; i++) {
             alphabetInString += alphabet.getCharacter(i);
         }
         assertEquals(correct, alphabetInString);
@@ -30,32 +32,48 @@ public class AlphabetArrayTest {
 
     @Test
     public void methodGetIndexOfCharacterReturnsCorrectIndex() {
-        alphabet.setAlphabet(characters);
         assertEquals(5, alphabet.getIndexOfCharacter('F'));
     }
 
     @Test
     public void methodgetIndexReturnsMinusOneIfNotFound() {
-        alphabet.setAlphabet(characters);
         assertEquals(-1, alphabet.getIndexOfCharacter('*'));
     }
 
     @Test
     public void methodGetCharacterReturnsCorrectCharacter() {
-        alphabet.setAlphabet(characters);
         assertEquals('J', alphabet.getCharacter(9));
+        assertEquals('j', alphabet.getCharacter(35));
     }
 
     @Test
     public void returnsTrueIfCharacterIsFound() {
-        alphabet.setAlphabet(characters);
         assertTrue(alphabet.containsCharacter('H'));
     }
 
     @Test
     public void returnsFalseIfCharacterIsNotFound() {
-        alphabet.setAlphabet(characters);
         assertFalse(alphabet.containsCharacter('*'));
+    }
+
+    @Test
+    public void charToUpperCaseReturnCorrectChar() {
+        assertEquals('H', alphabet.charToUpperCase('h'));
+    }
+
+    @Test
+    public void charToUpperCaseReturnsSameCharacterIfAlreadyInUpperCase() {
+        assertEquals('H', alphabet.charToUpperCase('H'));
+    }
+
+    @Test
+    public void charToLowerCaseReturnsCorrectChar() {
+        assertEquals('r', alphabet.charToLowerCase('R'));
+    }
+
+    @Test
+    public void charToLowerCaseReturnSameCharacterIfAlreadyInLowerCase() {
+        assertEquals('r', alphabet.charToLowerCase('r'));
     }
 
 }

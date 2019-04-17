@@ -64,7 +64,12 @@ public class Encryption {
                     index = 0;
                 }
             }
-            fileHandler.writeWord(wordToWrite + " ");
+            if (!endOfFile) {
+                fileHandler.writeWord(wordToWrite + " ");
+            } else {
+                fileHandler.writeWord(wordToWrite);
+            }
+
             if (endOfFile) {
                 break;
             }
