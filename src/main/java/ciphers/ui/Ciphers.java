@@ -17,19 +17,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 
-import javafx.application.Application;
 
 public class Ciphers extends Application {
 
     private Scene mainScene;
     private Scene encryptionScene;
     private Scene decryptionScene;
-    private Scene normalVigScene;
-    private Scene keyedVigScene;
     private File file;
     Encryption encryption = new Encryption();
     Decryption decryption = new Decryption();
@@ -125,6 +119,7 @@ public class Ciphers extends Application {
         choicesBox.getChildren().addAll(keyInReverse, alphInReverse, keyToRight);
         keyedBox.getChildren().addAll(keywordText, keywordInput,choicesText, choicesBox);
 
+        HBox buttonBox = new HBox(10);
 
         Button encryptButton = new Button("Encrypt!");
         encryptButton.setOnAction(e->{
@@ -165,6 +160,13 @@ public class Ciphers extends Application {
 
         });
 
+        Button backButton = new Button("Cancel");
+        backButton.setOnAction(e->{
+            primaryStage.setScene(mainScene);
+        });
+
+        buttonBox.getChildren().addAll(encryptButton, backButton);
+
         group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldToggle, Toggle newToggle) {
                 if (group.getSelectedToggle() == normal) {
@@ -175,7 +177,7 @@ public class Ciphers extends Application {
             }
         });
 
-        mainBox.getChildren().addAll(fileInfo, radioButtons, passphraseText, passphraseInput, encryptButton, complete);
+        mainBox.getChildren().addAll(fileInfo, radioButtons, passphraseText, passphraseInput, buttonBox, complete);
         encryptionScene = new Scene(mainBox, 400, 450);
     }
 
@@ -211,6 +213,8 @@ public class Ciphers extends Application {
         keyToRight.setPadding(new Insets(10));
         choicesBox.getChildren().addAll(keyInReverse, alphInReverse, keyToRight);
         keyedBox.getChildren().addAll(keywordText, keywordInput,choicesText, choicesBox);
+
+        HBox buttonBox = new HBox(10);
 
         Button decryptButton = new Button("Decrypt!");
         decryptButton.setOnAction(e->{
@@ -250,6 +254,13 @@ public class Ciphers extends Application {
             }
         });
 
+        Button backButton = new Button("Cancel");
+        backButton.setOnAction(e->{
+            primaryStage.setScene(mainScene);
+        });
+
+        buttonBox.getChildren().addAll(decryptButton, backButton);
+
         group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldToggle, Toggle newToggle) {
                 if (group.getSelectedToggle() == normal) {
@@ -260,7 +271,7 @@ public class Ciphers extends Application {
             }
         });
 
-        mainBox.getChildren().addAll(fileInfo, radioButtons, passphraseText, passphraseInput, decryptButton, complete);
+        mainBox.getChildren().addAll(fileInfo, radioButtons, passphraseText, passphraseInput, buttonBox, complete);
         decryptionScene = new Scene(mainBox, 400, 450);
 
     }
