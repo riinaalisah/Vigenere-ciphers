@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 import ciphers.util.Tableau;
 import org.junit.Test;

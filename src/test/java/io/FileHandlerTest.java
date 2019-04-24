@@ -1,4 +1,4 @@
-package IO;
+package io;
 
 import ciphers.io.FileHandler;
 import org.junit.After;

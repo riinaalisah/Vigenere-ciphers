@@ -1,4 +1,4 @@
-package Algos;
+package algos;
 
 import ciphers.algos.NormalVigenere;
 import org.junit.Before;

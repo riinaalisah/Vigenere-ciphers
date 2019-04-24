@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 import ciphers.util.AlphabetArray;
 import org.junit.Before;

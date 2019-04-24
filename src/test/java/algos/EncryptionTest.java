@@ -1,4 +1,4 @@
-package Algos;
+package algos;
 
 import ciphers.algos.Encryption;
 import ciphers.algos.KeyedVigenere;
