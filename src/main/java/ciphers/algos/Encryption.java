@@ -19,7 +19,7 @@ public class Encryption {
      */
     public File encrypt(String passphrase, File textFile, Tableau tableau) throws IOException {
 
-        FileHandler fileHandler = new FileHandler(textFile.getName(), true);
+        FileHandler fileHandler = new FileHandler(textFile, true);
         char[] passphraseInArray = wordToArray(passphrase);
         int index = 0;
         boolean endOfFile = false;

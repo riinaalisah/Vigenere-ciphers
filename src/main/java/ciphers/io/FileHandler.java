@@ -10,11 +10,14 @@ public class FileHandler {
     FileWriter writer;
 
 
-    public FileHandler(String fileName, boolean encrypt) throws IOException {
-        this.inputFile = new File("texts/" + fileName);
+    public FileHandler(File inputFile, boolean encrypt) throws IOException {
+        System.out.println("Filun nimi " + inputFile.getName());
+        this.inputFile = inputFile;
+        String fileName = inputFile.getName();
 
         String[] fileNameInArray = fileName.split("\\.");
         fileName = fileNameInArray[0];
+        System.out.println("Parsettu filu " + fileName);
 
         this.reader = new FileReader(inputFile);
         if (encrypt) {

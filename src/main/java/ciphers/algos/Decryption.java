@@ -20,7 +20,7 @@ public class Decryption {
      */
     public File decrypt(String passphrase, File textFile, Tableau tableau) throws IOException {
 
-        FileHandler fileHandler = new FileHandler(textFile.getName(), false);
+        FileHandler fileHandler = new FileHandler(textFile, false);
         int passphraseLength = passphrase.length();
         char[] passphraseInArray = passphrase.toCharArray();
         AlphabetArray alphabet = new AlphabetArray(52);
