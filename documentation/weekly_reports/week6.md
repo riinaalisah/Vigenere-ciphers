@@ -1,7 +1,7 @@
 ## Week 6 report
 
 #### Work hours
-6,5h
+8,5h
 
 #### What I did
 ##### Tuesday 16th of April
@@ -19,7 +19,11 @@
 - combined encryption and decryption to same class since they were so similar. Needs some fixing still though.
 
 ##### Thursday 25th of April
-
+- did some renaming
+- fixed encryption/decryption
+- updated tests
+- wrote testing document
+- updated implementation document
 
 #### Problems, difficulties etc.
 
