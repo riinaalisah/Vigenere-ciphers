@@ -10,11 +10,11 @@ import java.io.IOException;
 public class Encryption {
 
     /**
-     * Method used for encryption
-     * @param passphrase Used for row indexing
-     * @param textFile File to encrypt
-     * @param tableau Used to find correct letters for encrypted text
-     * @return
+     * Sets attributes needed for encryption and starts encryption (calls method goThrough()).
+     * @param passphrase Passphrase entered by user
+     * @param textFile File to be encrypted
+     * @param tableau Tableau to be used
+     * @return Encrypted file
      * @throws IOException
      */
     public File encrypt(String passphrase, File textFile, Tableau tableau) throws IOException {
@@ -56,7 +56,7 @@ public class Encryption {
 
                 char charY = passphraseInArray[index];
 
-                char letter = tableau.getLetter(alphabet.getIndexOfCharacter(charY), alphabet.getIndexOfCharacter(charX));
+                char letter = tableau.getCharacter(alphabet.getIndexOfCharacter(charY), alphabet.getIndexOfCharacter(charX));
                 wordToWrite += letter;
 
                 index++;
@@ -79,7 +79,11 @@ public class Encryption {
         return fileHandler.getOutputFile();
     }
 
-
+    /**
+     * Puts a word into a character array
+     * @param word Word to be put into array
+     * @return Word in a character array
+     */
     public char[] wordToArray(String word) {
         char[] array = new char[word.length()];
         for (int i = 0; i < word.length(); i++) {

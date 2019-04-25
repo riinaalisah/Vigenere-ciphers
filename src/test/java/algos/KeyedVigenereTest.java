@@ -18,7 +18,7 @@ public class KeyedVigenereTest {
     public void duplicateAlphabetAreRemovedFromKey() {
         kv.setChoicesAndKey("alfohmelldftssa", false, false, false);
         String correct = "ALFOHMEDTS";
-        kv.removeDuplicateAlphabetsFromKey();
+        kv.removeDuplicateCharactersFromKey();
         assertEquals(correct, kv.key);
 
     }

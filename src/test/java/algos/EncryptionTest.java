@@ -16,7 +16,7 @@ import static junit.framework.TestCase.assertTrue;
 
 public class EncryptionTest {
     String passphrase = "passphrase";
-    File file = new File("textForEncryptTests.txt");
+    File file = new File("src/test/testTexts/textForEncryptTests.txt");
     Tableau tableau;
     Encryption encryption;
 
@@ -31,7 +31,7 @@ public class EncryptionTest {
                             'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
                             'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         tableau = new Tableau(characters);
-        File correct = new File("texts/encryptionTestCorrectNormal.txt");
+        File correct = new File("src/test/testTexts/encryptionTestCorrectNormal.txt");
         File encrypted = encryption.encrypt(passphrase, this.file, tableau);
         assertTrue(FileUtils.contentEquals(correct, encrypted));
     }
@@ -42,14 +42,14 @@ public class EncryptionTest {
         kv.setChoicesAndKey("keyphrase", true, true, true);
         kv.setAlphabet();
         tableau = kv.tableau;
-        File correct = new File("texts/encryptionTestCorrectKeyedAllChoices.txt");
+        File correct = new File("src/test/testTexts/encryptionTestCorrectKeyedAllChoices.txt");
         File encrypted = encryption.encrypt("passphrase", file, tableau);
         assertTrue(FileUtils.contentEquals(correct, encrypted));
     }
 
     @After
     public void tearDown() {
-        File remove = new File("texts/textForEncryptTests.encrypted.txt");
+        File remove = new File("src/test/testTexts/textForEncryptTests.encrypted.txt");
         remove.delete();
     }
 }

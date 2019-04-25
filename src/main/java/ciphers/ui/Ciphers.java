@@ -1,6 +1,6 @@
 package ciphers.ui;
 
-import ciphers.algos.Decryption;
+import ciphers.algos.EncryptionAndDecryption;
 import ciphers.algos.Encryption;
 import ciphers.algos.KeyedVigenere;
 import ciphers.algos.NormalVigenere;
@@ -25,8 +25,7 @@ public class Ciphers extends Application {
     private Scene encryptionScene;
     private Scene decryptionScene;
     private File file;
-    Encryption encryption = new Encryption();
-    Decryption decryption = new Decryption();
+    EncryptionAndDecryption encryptAndDecrypt;
 
     @Override
     public void start(Stage primaryStage) {
@@ -127,7 +126,7 @@ public class Ciphers extends Application {
             if (normal.isSelected()) {
                 NormalVigenere normalVig = new NormalVigenere();
                 try {
-                    encryption.encrypt(passphrase, file, normalVig.tableau);
+                    encryptAndDecrypt = new EncryptionAndDecryption(passphrase, file, normalVig.tableau, true);
                     complete.setText("Encryption complete!");
 
                 } catch (Exception ex) {
@@ -151,7 +150,7 @@ public class Ciphers extends Application {
                 keyedVig.setChoicesAndKey(key, keyInRev, alphInRev, keyRight);
                 keyedVig.setAlphabet();
                 try {
-                    encryption.encrypt(passphrase, file, keyedVig.tableau);
+                    encryptAndDecrypt = new EncryptionAndDecryption(passphrase, file, keyedVig.tableau, true);
                     complete.setText("Encryption complete!");
                 } catch (Exception ex) {
                     complete.setText("An error occurred. Please check your inputs.");
@@ -222,7 +221,7 @@ public class Ciphers extends Application {
             if (normal.isSelected()) {
                 NormalVigenere normalVig = new NormalVigenere();
                 try {
-                    decryption.decrypt(passphrase, file, normalVig.tableau);
+                    encryptAndDecrypt = new EncryptionAndDecryption(passphrase, file, normalVig.tableau, false);
                     complete.setText("Decryption complete!");
 
                 } catch (Exception ex) {
@@ -246,7 +245,7 @@ public class Ciphers extends Application {
                 keyedVig.setChoicesAndKey(key, keyInRev, alphInRev, keyRight);
                 keyedVig.setAlphabet();
                 try {
-                    decryption.decrypt(passphrase, file, keyedVig.tableau);
+                    encryptAndDecrypt = new EncryptionAndDecryption(passphrase, file, keyedVig.tableau, false);
                     complete.setText("Decryption complete!");
                 } catch (Exception ex) {
                     complete.setText("An error occurred. Please check your inputs.");
@@ -296,7 +295,7 @@ public class Ciphers extends Application {
     /*
 
     static Encryption encryption = new Encryption();
-    static Decryption decryption = new Decryption();
+    static EncryptionAndDecryption decryption = new EncryptionAndDecryption();
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {

@@ -3,6 +3,9 @@ package ciphers.algos;
 import ciphers.util.AlphabetArray;
 import ciphers.util.Tableau;
 
+/**
+ * Class for normal Vigenère cipher
+ */
 public class NormalVigenere {
 
     public Tableau tableau;
@@ -11,6 +14,10 @@ public class NormalVigenere {
                             'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     AlphabetArray alphabet = new AlphabetArray(52);
 
+    /**
+     * Creates a new instance of normal Vigenère cipher.
+     * Sets alphabet and tableau with regular alphabet array.
+     */
     public NormalVigenere() {
         alphabet.setAlphabet(characters);
         tableau = new Tableau(characters);

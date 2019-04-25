@@ -2,6 +2,9 @@ package ciphers.io;
 
 import java.io.*;
 
+/**
+ * Used for writing and reading files.
+ */
 public class FileHandler {
 
     File inputFile;
@@ -10,16 +13,20 @@ public class FileHandler {
     FileWriter writer;
 
 
+    /**
+     * Creates a new FileHandler
+     * @param inputFile File to be read
+     * @param encrypt True if text is to be encrypted, false if decrypted. Helps with file naming.
+     * @throws IOException
+     */
     public FileHandler(File inputFile, boolean encrypt) throws IOException {
-        System.out.println("Filun nimi " + inputFile.getName());
         this.inputFile = inputFile;
         String fileName = inputFile.getName();
-
         String[] fileNameInArray = fileName.split("\\.");
         fileName = fileNameInArray[0];
-        System.out.println("Parsettu filu " + fileName);
-
         this.reader = new FileReader(inputFile);
+
+        // Create file to be written to
         if (encrypt) {
             this.outputFile = new File("texts/" + fileName + ".encrypted.txt");
         } else {
@@ -29,15 +36,16 @@ public class FileHandler {
         this.writer = new FileWriter(outputFile);
     }
 
-    public File getOutputFile() {
-        return this.outputFile;
-    }
-
-
+    /**
+     * Reads and returns the next word from input file.
+     * @return Read word. Adds 'ENDOFFILEREACHED' to the end of the word if it is last.
+     * @throws IOException
+     */
     public String nextWord() throws IOException {
         String word = "";
         while (true) {
             int characterAsInt = reader.read();
+            // Check if it is the end of file
             if (characterAsInt == -1) {
                 return word + "ENDOFFILEREACHED";
             }
@@ -54,6 +62,10 @@ public class FileHandler {
 
     public void writeWord(String word) throws IOException {
         writer.write(word);
+    }
+
+    public File getOutputFile() {
+        return this.outputFile;
     }
 
     public void close() throws IOException {

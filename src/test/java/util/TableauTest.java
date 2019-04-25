@@ -42,7 +42,7 @@ public class TableauTest {
         String tableauInString = "";
         for (int y = 0; y < tab.tableau.length; y++) {
             for (int x = 0; x < tab.tableau[y].length; x++) {
-                tableauInString += tab.getLetter(y, x);
+                tableauInString += tab.getCharacter(y, x);
             }
             tableauInString += "\n";
         }
@@ -83,7 +83,7 @@ public class TableauTest {
         String tableau = "";
         for (int y = 0; y < tab.tableau.length; y++) {
             for (int x = 0; x < tab.tableau[y].length; x++) {
-                tableau += tab.getLetter(y, x);
+                tableau += tab.getCharacter(y, x);
             }
             tableau += "\n";
         }
