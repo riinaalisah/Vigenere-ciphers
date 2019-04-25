@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Class for encryption and decryption
  */
-public class EncryptionAndDecryption {
+public class Ciphers {
 
     private char[] passphraseInArray;
     private AlphabetArray alphabet;
@@ -24,7 +24,7 @@ public class EncryptionAndDecryption {
      * @param tableau Tableau to be used
      * @throws IOException
      */
-    public EncryptionAndDecryption(String passphrase, File textFile, Tableau tableau, boolean encrypt) throws IOException {
+    public Ciphers(String passphrase, File textFile, Tableau tableau, boolean encrypt) throws IOException {
         // Create FileHandler for writing and reading files
         FileHandler fileHandler;
         if (encrypt) {

@@ -1,10 +1,9 @@
 package algos;
 
-import ciphers.algos.Encryption;
+import ciphers.algos.Ciphers;
 import ciphers.algos.KeyedVigenere;
 import ciphers.util.Tableau;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
@@ -18,12 +17,8 @@ public class EncryptionTest {
     String passphrase = "passphrase";
     File file = new File("src/test/testTexts/textForEncryptTests.txt");
     Tableau tableau;
-    Encryption encryption;
+    Ciphers encryption;
 
-    @Before
-    public void setUp() {
-        encryption = new Encryption();
-    }
 
     @Test
     public void encryptionCorrectWithNormalTableau() throws IOException {
@@ -32,7 +27,8 @@ public class EncryptionTest {
                             'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         tableau = new Tableau(characters);
         File correct = new File("src/test/testTexts/encryptionTestCorrectNormal.txt");
-        File encrypted = encryption.encrypt(passphrase, this.file, tableau);
+        encryption = new Ciphers(passphrase, file, tableau, true);
+        File encrypted = new File("texts/textForEncryptTests.encrypted.txt");
         assertTrue(FileUtils.contentEquals(correct, encrypted));
     }
 
@@ -43,13 +39,14 @@ public class EncryptionTest {
         kv.setAlphabet();
         tableau = kv.tableau;
         File correct = new File("src/test/testTexts/encryptionTestCorrectKeyedAllChoices.txt");
-        File encrypted = encryption.encrypt("passphrase", file, tableau);
+        encryption = new Ciphers(passphrase, file, tableau, true);
+        File encrypted = new File("texts/textForEncryptTests.encrypted.txt");
         assertTrue(FileUtils.contentEquals(correct, encrypted));
     }
 
     @After
     public void tearDown() {
-        File remove = new File("src/test/testTexts/textForEncryptTests.encrypted.txt");
+        File remove = new File("texts/textForEncryptTests.encrypted.txt");
         remove.delete();
     }
 }
