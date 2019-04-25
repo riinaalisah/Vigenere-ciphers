@@ -47,7 +47,9 @@ public class FileHandlerTest {
 
     @After
     public void tearDown() {
-        File decrypted = new File("test/testTexts/textForFileHandlerTests.decrypted.txt");
+        File decrypted = new File("texts/textForFileHandlerTests.decrypted.txt");
+        File encrypted = new File("texts/textForFileHandlerTests.encrypted.txt");
         decrypted.delete();
+        encrypted.delete();
     }
 }
