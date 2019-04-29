@@ -19,9 +19,10 @@ public class Ciphers {
 
     /**
      * Sets attributes needed for encryption/decryption.
+     *
      * @param passphrase Passphrase entered by user
-     * @param textFile File to be encrypted/decrypted
-     * @param tableau Tableau to be used
+     * @param textFile   File to be encrypted/decrypted
+     * @param tableau    Tableau to be used
      * @throws IOException
      */
     public Ciphers(String passphrase, File textFile, Tableau tableau, boolean encrypt) throws IOException {
@@ -35,7 +36,8 @@ public class Ciphers {
 
         // Set alphabet array, used to check alphabet in input file
         this.alphabet = new AlphabetArray(52);
-        this.alphabet.setAlphabet(tableau.tableau[0]);
+        char[][] tab = tableau.getTableau();
+        this.alphabet.setAlphabet(tab[0]);
 
         // Passphrase to upper case (since y-axis in tableau is always in upper case)
         this.passphraseInArray = passphrase.toCharArray();
@@ -47,14 +49,14 @@ public class Ciphers {
         File outputFile = goThrough(fileHandler);
     }
 
-
     /**
      * Goes through given text word by word, and creates words to write to the encrypted/decrypted text.
+     *
      * @param fileHandler Used to read and write files
      * @return encrypted/decrypted File, retrieved from fileHandler
      * @throws IOException
      */
-    public File goThrough(FileHandler fileHandler) throws IOException {
+    private File goThrough(FileHandler fileHandler) throws IOException {
         int index = 0;
         boolean endOfFile = false;
 
@@ -117,7 +119,8 @@ public class Ciphers {
 
     private char decrypt(char charY, char charX) {
         // Character array on row with index number of charY
-        char[] charsAtCharYRow = tableau.tableau[alphabet.getIndexOfCharacter(charY)];
+        char[][] tab = tableau.getTableau();
+        char[] charsAtCharYRow = tab[alphabet.getIndexOfCharacter(charY)];
 
         // Find charX from that row. Character to write is character with the same index from alphabet
         char character = '\u0000';
@@ -132,10 +135,11 @@ public class Ciphers {
 
     /**
      * Puts a word into a character array
+     *
      * @param word Word to be put into array
      * @return Word in a character array
      */
-    public char[] wordToArray(String word) {
+    private char[] wordToArray(String word) {
         char[] array = new char[word.length()];
         for (int i = 0; i < word.length(); i++) {
             array[i] = word.charAt(i);

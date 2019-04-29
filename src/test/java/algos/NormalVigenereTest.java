@@ -1,6 +1,8 @@
 package algos;
 
 import ciphers.algos.NormalVigenere;
+import ciphers.util.AlphabetArray;
+import ciphers.util.Tableau;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,16 +10,28 @@ import static org.junit.Assert.assertEquals;
 
 public class NormalVigenereTest {
 
-    NormalVigenere vc;
+    NormalVigenere vigenere;
 
     @Before
     public void setUp() {
-        vc = new NormalVigenere();
+        vigenere = new NormalVigenere();
+    }
+
+    @Test
+    public void alphabetAreSetCorrectly() {
+        String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        String alphabetInString = "";
+        AlphabetArray alphabetArray = vigenere.getAlphabet();
+        char[] alphabet = alphabetArray.getAlphabet();
+        for (int i = 0; i < alphabet.length; i++) {
+            alphabetInString += alphabet[i];
+        }
+        assertEquals(correct, alphabetInString);
     }
 
 
     @Test
-    public void tableauIsCorrect() {
+    public void tableauIsSetCorrectly() {
         String correct = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\n" +
                         "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza\n" +
                         "CDEFGHIJKLMNOPQRSTUVWXYZABcdefghijklmnopqrstuvwxyzab\n" +
@@ -45,9 +59,11 @@ public class NormalVigenereTest {
                         "YZABCDEFGHIJKLMNOPQRSTUVWXyzabcdefghijklmnopqrstuvwx\n" +
                         "ZABCDEFGHIJKLMNOPQRSTUVWXYzabcdefghijklmnopqrstuvwxy\n";
         String tableauInString = "";
-        for (int y = 0; y < vc.tableau.tableau.length; y++) {
-            for (int x = 0; x < vc.tableau.tableau[y].length; x++) {
-                tableauInString += vc.tableau.tableau[y][x];
+        Tableau t = vigenere.getTableau();
+        char[][] tableau = t.getTableau();
+        for (int y = 0; y < tableau.length; y++) {
+            for (int x = 0; x < tableau[y].length; x++) {
+                tableauInString += tableau[y][x];
             }
             tableauInString += "\n";
         }

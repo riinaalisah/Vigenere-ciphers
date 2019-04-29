@@ -38,11 +38,12 @@ public class TableauTest {
                         "ZABCDEFGHIJKLMNOPQRSTUVWXYzabcdefghijklmnopqrstuvwxy\n";
         char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
                            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-        Tableau tab = new Tableau(alphabet);
+        Tableau t = new Tableau(alphabet);
         String tableauInString = "";
-        for (int y = 0; y < tab.tableau.length; y++) {
-            for (int x = 0; x < tab.tableau[y].length; x++) {
-                tableauInString += tab.getCharacter(y, x);
+        char[][] tableau = t.getTableau();
+        for (int y = 0; y < tableau.length; y++) {
+            for (int x = 0; x < tableau[y].length; x++) {
+                tableauInString += t.getCharacter(y, x);
             }
             tableauInString += "\n";
         }
@@ -79,15 +80,16 @@ public class TableauTest {
                         "ZAPLETRBCDFGHIJKMNOQSUVWXYzapletrbcdfghijkmnoqsuvwxy\n";
         char[] alphabet = {'A','P','L','E','T','R','B','C','D','F','G','H','I','J','K','M','N','O','Q','S','U','V','W','X','Y','Z',
                            'a','p','l','e','t','r','b','c','d','f','g','h','i','j','k','m','n','o','q','s','u','v','w','x','y','z'};
-        Tableau tab = new Tableau(alphabet);
-        String tableau = "";
-        for (int y = 0; y < tab.tableau.length; y++) {
-            for (int x = 0; x < tab.tableau[y].length; x++) {
-                tableau += tab.getCharacter(y, x);
+        t = new Tableau(alphabet);
+        char[][] tableau = t.getTableau();
+        String tableauInString = "";
+        for (int y = 0; y < tableau.length; y++) {
+            for (int x = 0; x < tableau[y].length; x++) {
+                tableauInString += t.getCharacter(y, x);
             }
-            tableau += "\n";
+            tableauInString += "\n";
         }
-        assertEquals(correct, tableau);
+        assertEquals(correct, tableauInString);
     }
 
 }

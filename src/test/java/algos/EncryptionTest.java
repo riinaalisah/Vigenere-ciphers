@@ -32,12 +32,13 @@ public class EncryptionTest {
         assertTrue(FileUtils.contentEquals(correct, encrypted));
     }
 
+
+
     @Test
     public void encryptionCorrectWithKeyedVigenereAllChoicesPicked() throws IOException {
-        KeyedVigenere kv = new KeyedVigenere();
-        kv.setChoicesAndKey("keyphrase", true, true, true);
-        kv.setAlphabet();
-        tableau = kv.tableau;
+        KeyedVigenere kv = new KeyedVigenere("keyphrase", true, true, true);
+        kv.organiseAlphabet();
+        tableau = kv.getTableau();
         File correct = new File("src/test/testTexts/encryptionTestCorrectKeyedAllChoices.txt");
         encryption = new Ciphers(passphrase, file, tableau, true);
         File encrypted = new File("texts/textForEncryptTests.encrypted.txt");

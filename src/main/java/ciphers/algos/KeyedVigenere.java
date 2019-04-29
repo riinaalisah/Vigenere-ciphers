@@ -8,32 +8,33 @@ import ciphers.util.Tableau;
  */
 public class KeyedVigenere {
 
-    public String key;
-    boolean keyInReverse;
-    boolean alphInReverse;
-    boolean keyToRight;
+    private String key;
+    private boolean keyInReverse;
+    private boolean alphInReverse;
+    private boolean keyToRight;
+    private Tableau tableau;
 
-    public Tableau tableau;
-    public char[] characters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
-                                'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-                                'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    public AlphabetArray alphabet = new AlphabetArray(52);
-    // originalAlphabet is used to change characters to upper or lower case,
-    // because then the alphabet need to be in alphabetical order
-    public AlphabetArray originalAlphabet = new AlphabetArray(52);
+    private AlphabetArray alphabet;
+    private AlphabetArray originalAlphabet; // used to change characters to upper or lower case
+    private char[] characters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+            'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
     /**
-     * Sets the key entered by user and sets users choices on how to implement the key to alphabet.
-     * @param key Keyword, entered by user
-     * @param keyInReverse True if key is wanted in reverse order
-     * @param alphInReverse True if alphabet is wanted in reverse order
-     * @param keyToRight True if key is wanted to the right side (end) of alphabet
+     * Creates a new instance of keyed Vigenère and sets users choices
+     *
+     * @param key           Keyword entered by user, to be implemented into alphabet
+     * @param keyInReverse  True if key is wanted in reverse order
+     * @param alphInReverse True if alphabet are wanted in reverse order
+     * @param keyToRight    True if Key is wanted to the right side (end) of alphabet
      */
-    public void setChoicesAndKey(String key, boolean keyInReverse, boolean alphInReverse, boolean keyToRight) {
-        originalAlphabet.setAlphabet(characters);
+    public KeyedVigenere(String key, boolean keyInReverse, boolean alphInReverse, boolean keyToRight) {
+        alphabet = new AlphabetArray(52);
+        originalAlphabet = new AlphabetArray(52);
         alphabet.setAlphabet(characters);
-        keyToUpperCase(key);
+        originalAlphabet.setAlphabet(characters);
 
+        keyToUpperCase(key);
         this.keyInReverse = keyInReverse;
         this.alphInReverse = alphInReverse;
         this.keyToRight = keyToRight;
@@ -41,7 +42,8 @@ public class KeyedVigenere {
 
     /**
      * Sets key to upper case
-     * @param key Key entered bu user
+     *
+     * @param key Keyword entered by user
      */
     private void keyToUpperCase(String key) {
         char[] keyParts = wordToArray(key);
@@ -53,9 +55,9 @@ public class KeyedVigenere {
     }
 
     /**
-     * Calls methods to re-organise the alphabet according to user's choices.
+     * Calls methods to organise the alphabet according to user's choices.
      */
-    public void setAlphabet() {
+    public void organiseAlphabet() {
         if (this.alphInReverse) {
             reverseAlphabet();
         }
@@ -72,14 +74,14 @@ public class KeyedVigenere {
             insertKeyToLeft();
         }
 
-        // Finally, set tableau when alphabet are re-organised
+        // Finally, set tableau when alphabet are organised
         tableau = new Tableau(alphabet.getAlphabet());
     }
 
     /**
      * Removes duplicate characters from key and updates the key.
      */
-    public void removeDuplicateCharactersFromKey() {
+    private void removeDuplicateCharactersFromKey() {
         String newKey = "";
         char[] keyParts = wordToArray(key);
         // Create new Alphabet Array to check for duplicates
@@ -102,7 +104,7 @@ public class KeyedVigenere {
     /**
      * Puts alphabet in reverse order
      */
-    public void reverseAlphabet() {
+    private void reverseAlphabet() {
         char[] newAlphabet = new char[52];
         int index = 0;
 
@@ -124,7 +126,7 @@ public class KeyedVigenere {
     /**
      * Puts keyword in reverse order
      */
-    public void reverseKey() {
+    private void reverseKey() {
         char[] parts = key.toCharArray();
         String reversed = "";
         for (int i = parts.length - 1; i >= 0; i--) {
@@ -242,6 +244,7 @@ public class KeyedVigenere {
 
     /**
      * Removes characters found in the key from alphabet
+     *
      * @param keyParts Key in a character array
      */
     private void removeKeyCharsFromAlphabet(char[] keyParts) {
@@ -256,15 +259,28 @@ public class KeyedVigenere {
 
     /**
      * Puts a word into a character array
+     *
      * @param word Word to be put into array
      * @return Word in a character array
      */
-    public char[] wordToArray(String word) {
+    private char[] wordToArray(String word) {
         char[] array = new char[word.length()];
         for (int i = 0; i < word.length(); i++) {
             array[i] = word.charAt(i);
         }
         return array;
+    }
+
+    public String getKey() {
+        return this.key;
+    }
+
+    public Tableau getTableau() {
+        return this.tableau;
+    }
+
+    public AlphabetArray getAlphabet() {
+        return this.alphabet;
     }
 
 }

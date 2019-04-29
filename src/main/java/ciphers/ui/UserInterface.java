@@ -125,7 +125,7 @@ public class UserInterface extends Application {
             if (normal.isSelected()) {
                 NormalVigenere normalVig = new NormalVigenere();
                 try {
-                    encryptAndDecrypt = new Ciphers(passphrase, file, normalVig.tableau, true);
+                    encryptAndDecrypt = new Ciphers(passphrase, file, normalVig.getTableau(), true);
                     complete.setText("Encryption complete!");
 
                 } catch (Exception ex) {
@@ -145,11 +145,10 @@ public class UserInterface extends Application {
                     keyRight = true;
                 }
                 String key = keywordInput.getText();
-                KeyedVigenere keyedVig = new KeyedVigenere();
-                keyedVig.setChoicesAndKey(key, keyInRev, alphInRev, keyRight);
-                keyedVig.setAlphabet();
+                KeyedVigenere keyedVig = new KeyedVigenere(key, keyInRev, alphInRev, keyRight);
+                keyedVig.organiseAlphabet();
                 try {
-                    encryptAndDecrypt = new Ciphers(passphrase, file, keyedVig.tableau, true);
+                    encryptAndDecrypt = new Ciphers(passphrase, file, keyedVig.getTableau(), true);
                     complete.setText("Encryption complete!");
                 } catch (Exception ex) {
                     complete.setText("An error occurred. Please check your inputs.");
@@ -220,7 +219,7 @@ public class UserInterface extends Application {
             if (normal.isSelected()) {
                 NormalVigenere normalVig = new NormalVigenere();
                 try {
-                    encryptAndDecrypt = new Ciphers(passphrase, file, normalVig.tableau, false);
+                    encryptAndDecrypt = new Ciphers(passphrase, file, normalVig.getTableau(), false);
                     complete.setText("Decryption complete!");
 
                 } catch (Exception ex) {
@@ -240,11 +239,10 @@ public class UserInterface extends Application {
                     keyRight = true;
                 }
                 String key = keywordInput.getText();
-                KeyedVigenere keyedVig = new KeyedVigenere();
-                keyedVig.setChoicesAndKey(key, keyInRev, alphInRev, keyRight);
-                keyedVig.setAlphabet();
+                KeyedVigenere keyedVig = new KeyedVigenere(key, keyInRev, alphInRev, keyRight);
+                keyedVig.organiseAlphabet();
                 try {
-                    encryptAndDecrypt = new Ciphers(passphrase, file, keyedVig.tableau, false);
+                    encryptAndDecrypt = new Ciphers(passphrase, file, keyedVig.getTableau(), false);
                     complete.setText("Decryption complete!");
                 } catch (Exception ex) {
                     complete.setText("An error occurred. Please check your inputs.");

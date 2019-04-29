@@ -37,10 +37,9 @@ public class DecryptionTest {
     @Test
     public void decryptionCorrectWithkeyedAllChoices() throws IOException {
         file = new File("src/test/testTexts/textForDecryptTestKeyedAllChoices.txt");
-        KeyedVigenere kv = new KeyedVigenere();
-        kv.setChoicesAndKey("keyphrase", true, true, true);
-        kv.setAlphabet();
-        decryption = new Ciphers(passphrase, file, kv.tableau, false);
+        KeyedVigenere kv = new KeyedVigenere("keyphrase", true, true, true);
+        kv.organiseAlphabet();
+        decryption = new Ciphers(passphrase, file, kv.getTableau(), false);
         File decrypted = new File("texts/textForDecryptTestKeyedAllChoices.decrypted.txt");
         assertTrue(FileUtils.contentEquals(correctFile, decrypted));
     }
