@@ -6,7 +6,7 @@ JUnit has been used for unit testing.
 
 Code coverage:
 
-![](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/coco.png)
+![](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/pictures/coco.png)
 
 
 #### Algos
