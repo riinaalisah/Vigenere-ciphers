@@ -14,6 +14,8 @@ The aim for this project is to create a program that can encrypt messages using 
 
 [Testing document](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/testing_document.md)
 
+[User manual](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/userManual.md)
+
 ---
 
 ### Weekly reports
