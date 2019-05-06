@@ -14,11 +14,15 @@ Encrypted/decrypted files are added to the same folder.
 
 ### First View
 
+![](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/pictures/firstView.png)
+
 In the first view user chooses if they want to encrypt or decrypt a text and they enter the
 name of the text file to be encrypted/decrypted. If a file with entered name cannot be found in folder *texts*,
 application shows an error message.
 
 ### Second View, Encryption
+
+![](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/pictures/secondNormal.png) ![](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/pictures/secondKeyed.png)
 
 In the second view (when user has chosen to encrypt) user chooses which cipher they want to use. If they choose normal Vigenère,
 they just need to enter the passphrase they want to use for encryption. If keyed Vigenère is chosen, they also need to enter the keyword
