@@ -23,7 +23,8 @@ public class Ciphers {
      * @param passphrase Passphrase entered by user
      * @param textFile   File to be encrypted/decrypted
      * @param tableau    Tableau to be used
-     * @throws IOException
+     * @param encrypt    True if encryption is chosen, false if decryption
+     * @throws IOException in case of an error
      */
     public Ciphers(String passphrase, File textFile, Tableau tableau, boolean encrypt) throws IOException {
         // Create FileHandler for writing and reading files
@@ -54,7 +55,7 @@ public class Ciphers {
      *
      * @param fileHandler Used to read and write files
      * @return encrypted/decrypted File, retrieved from fileHandler
-     * @throws IOException
+     * @throws IOException in case of an error
      */
     private File goThrough(FileHandler fileHandler) throws IOException {
         int index = 0;

@@ -15,9 +15,10 @@ public class FileHandler {
 
     /**
      * Creates a new FileHandler
+     *
      * @param inputFile File to be read
-     * @param encrypt True if text is to be encrypted, false if decrypted. Helps with file naming.
-     * @throws IOException
+     * @param encrypt   True if text is to be encrypted, false if decrypted. Helps with file naming.
+     * @throws IOException in case of an error
      */
     public FileHandler(File inputFile, boolean encrypt) throws IOException {
         this.inputFile = inputFile;
@@ -38,8 +39,9 @@ public class FileHandler {
 
     /**
      * Reads and returns the next word from input file.
+     *
      * @return Read word. Adds 'ENDOFFILEREACHED' to the end of the word if it is last.
-     * @throws IOException
+     * @throws IOException in case of an error
      */
     public String nextWord() throws IOException {
         String word = "";
