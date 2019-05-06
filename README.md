@@ -10,6 +10,8 @@ The aim for this project is to create a program that can encrypt messages using 
 
 Final release can be found [here](https://github.com/riinaalisah/Vigenere-ciphers/releases/tag/Final)
 
+---
+
 ### Documentation
 
 [Specification document](https://github.com/riinaalisah/Vigenere-ciphers/blob/master/documentation/specification_document.md)
