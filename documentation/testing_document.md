@@ -37,7 +37,7 @@ Homer, which has 132 774 words and 685 419 characters.
 
 #### Encryption
 
-There is really no difference between the performance of the two Vigenère ciphers. Both ciphers encrypt the text in about 250ms, and changes in passphrase length, or - in the keyed Vigenère's case - keyword length and different choices do not affect the result. I did multiple runs with both ciphers and different kinds of passphrases, keys and choices, but the time used was always between 230-250ms.
+There is really no difference between the performance of the two Vigenère ciphers. Both ciphers encrypt the text in about 250ms, and changes in passphrase length, or - in the keyed Vigenère's case - keyword length and different choices do not affect the result. I did multiple runs with both ciphers and different kinds of passphrases, keys and choices, but the time used was always between 230-250ms. Time started when all attributes (passphrase, keyword, choices) had been set and ended when the text was encrypted.
 
 
 #### Decryption
