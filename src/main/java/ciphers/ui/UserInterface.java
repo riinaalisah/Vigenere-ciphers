@@ -17,7 +17,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
-
+/**
+ * Class for user interface
+ */
 public class UserInterface extends Application {
 
     private Scene mainScene;
@@ -34,7 +36,7 @@ public class UserInterface extends Application {
         primaryStage.setTitle("Vigenère ciphers");
         primaryStage.setScene(mainScene);
         primaryStage.show();
-        primaryStage.setOnCloseRequest(e->{
+        primaryStage.setOnCloseRequest(e -> {
             stop();
         });
     }
@@ -62,7 +64,7 @@ public class UserInterface extends Application {
         inputAndButton.setPadding(new Insets(10));
         TextField fileNameInput = new TextField();
         Button nextButton = new Button("Next");
-        nextButton.setOnAction(e->{
+        nextButton.setOnAction(e -> {
             String fileName = fileNameInput.getText();
             if (!new File("texts/" + fileName).exists()) {
                 errorLabel.setText("Text file with that name cannot be found, please try again.");
@@ -115,12 +117,12 @@ public class UserInterface extends Application {
         RadioButton keyToRight = new RadioButton("Keyword to the right side of alphabet");
         keyToRight.setPadding(new Insets(10));
         choicesBox.getChildren().addAll(keyInReverse, alphInReverse, keyToRight);
-        keyedBox.getChildren().addAll(keywordText, keywordInput,choicesText, choicesBox);
+        keyedBox.getChildren().addAll(keywordText, keywordInput, choicesText, choicesBox);
 
         HBox buttonBox = new HBox(10);
 
         Button encryptButton = new Button("Encrypt!");
-        encryptButton.setOnAction(e->{
+        encryptButton.setOnAction(e -> {
             String passphrase = passphraseInput.getText();
             if (normal.isSelected()) {
                 NormalVigenere normalVig = new NormalVigenere();
@@ -158,7 +160,7 @@ public class UserInterface extends Application {
         });
 
         Button backButton = new Button("Cancel");
-        backButton.setOnAction(e->{
+        backButton.setOnAction(e -> {
             primaryStage.setScene(mainScene);
         });
 
@@ -209,12 +211,12 @@ public class UserInterface extends Application {
         RadioButton keyToRight = new RadioButton("Keyword to the right side of alphabet");
         keyToRight.setPadding(new Insets(10));
         choicesBox.getChildren().addAll(keyInReverse, alphInReverse, keyToRight);
-        keyedBox.getChildren().addAll(keywordText, keywordInput,choicesText, choicesBox);
+        keyedBox.getChildren().addAll(keywordText, keywordInput, choicesText, choicesBox);
 
         HBox buttonBox = new HBox(10);
 
         Button decryptButton = new Button("Decrypt!");
-        decryptButton.setOnAction(e->{
+        decryptButton.setOnAction(e -> {
             String passphrase = passphraseInput.getText();
             if (normal.isSelected()) {
                 NormalVigenere normalVig = new NormalVigenere();
@@ -251,7 +253,7 @@ public class UserInterface extends Application {
         });
 
         Button backButton = new Button("Cancel");
-        backButton.setOnAction(e->{
+        backButton.setOnAction(e -> {
             primaryStage.setScene(mainScene);
         });
 

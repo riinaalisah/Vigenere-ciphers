@@ -26,6 +26,8 @@
 - updated implementation document
 
 #### Problems, difficulties etc.
+Not any problems
 
 #### What next
+Cleaning up the code and writing rest of the documentation
 
